@@ -1,0 +1,27 @@
+name: "Theory"
+description: Propose a theory about how puzzles connect or what clues mean
+title: "[THEORY] "
+labels: ["theory"]
+body:
+  - type: textarea
+    id: theory
+    attributes:
+      label: What's your theory?
+      description: Explain your theory clearly. What do you think is going on?
+      placeholder: "I think the spider in the Super Bowl ad represents a web cipher, and the sine wave indicates the frequency to use..."
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: What clues or observations support this theory?
+      placeholder: "1. The spider appears at 0:08 just before a web-like pattern\n2. Sine waves are used in frequency ciphers\n3. ..."
+    validations:
+      required: true
+  - type: textarea
+    id: testable
+    attributes:
+      label: How could we test this?
+      description: What would confirm or disprove this theory?
+      placeholder: "If we apply a frequency cipher with key X to the bird-on-wire symbols, we should get readable text"

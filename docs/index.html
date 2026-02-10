@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MrBeast $1M Puzzle Tracker</title>
+<style>
+:root { --bg: #0a0a0f; --card: #12121a; --border: #1e1e2e; --accent: #4ade80; --warn: #f59e0b; --danger: #ef4444; --text: #e2e8f0; --dim: #64748b; --blue: #60a5fa; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+header { text-align: center; padding: 30px 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 30px; }
+header h1 { font-size: 2em; margin-bottom: 4px; }
+header h1 span { color: var(--accent); }
+.subtitle { color: var(--dim); font-size: 0.95em; }
+.deadline { color: var(--warn); font-weight: 600; margin-top: 8px; }
+.status-bar { display: flex; gap: 12px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+.status-pill { padding: 4px 14px; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
+.pill-red { background: rgba(239,68,68,0.15); color: var(--danger); border: 1px solid rgba(239,68,68,0.3); }
+.pill-amber { background: rgba(245,158,11,0.15); color: var(--warn); border: 1px solid rgba(245,158,11,0.3); }
+.pill-green { background: rgba(74,222,128,0.15); color: var(--accent); border: 1px solid rgba(74,222,128,0.3); }
+
+section { margin-bottom: 30px; }
+h2 { font-size: 1.3em; margin-bottom: 14px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05em; margin: 14px 0 8px; color: var(--blue); }
+
+.word-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; margin: 16px 0; }
+.word-box { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 8px; text-align: center; }
+.word-box .num { font-size: 0.75em; color: var(--dim); }
+.word-box .letters { font-family: monospace; font-size: 1.1em; letter-spacing: 2px; margin: 6px 0; color: var(--warn); }
+.word-box.solved .letters { color: var(--accent); }
+.word-box .count { font-size: 0.7em; color: var(--dim); }
+
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.9em; }
+th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+th { color: var(--dim); font-weight: 600; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.5px; }
+td a { color: var(--blue); text-decoration: none; }
+td a:hover { text-decoration: underline; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; }
+.badge-todo { background: rgba(239,68,68,0.15); color: var(--danger); }
+.badge-wip { background: rgba(245,158,11,0.15); color: var(--warn); }
+.badge-done { background: rgba(74,222,128,0.15); color: var(--accent); }
+
+.clue-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin: 10px 0; }
+.clue-card h4 { color: var(--accent); margin-bottom: 6px; }
+.clue-card p { color: var(--dim); font-size: 0.9em; }
+.clue-card code { background: rgba(96,165,250,0.1); color: var(--blue); padding: 1px 6px; border-radius: 3px; font-size: 0.9em; }
+
+.redacted { background: var(--danger); color: var(--danger); border-radius: 3px; padding: 0 4px; cursor: pointer; transition: all 0.3s; user-select: none; }
+.redacted:hover::after { content: ' (contribute to unlock!)'; color: var(--text); font-size: 0.8em; }
+.redacted.revealed { background: transparent; color: var(--accent); }
+
+.contribute-box { background: linear-gradient(135deg, rgba(74,222,128,0.08), rgba(96,165,250,0.08)); border: 1px dashed var(--accent); border-radius: 10px; padding: 20px; text-align: center; margin: 20px 0; }
+.contribute-box h3 { color: var(--accent); margin-bottom: 8px; }
+.contribute-box p { color: var(--dim); font-size: 0.9em; }
+
+.sudoku-grid { display: inline-grid; grid-template-columns: repeat(9, 36px); gap: 1px; background: var(--border); border: 2px solid var(--dim); margin: 10px 0; font-family: monospace; }
+.sudoku-grid .cell { background: var(--card); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 0.9em; }
+.sudoku-grid .cell.given { color: var(--accent); font-weight: 700; }
+.sudoku-grid .cell.empty { color: var(--dim); }
+.sudoku-grid .cell.br { border-right: 2px solid var(--dim); }
+.sudoku-grid .cell.bb { border-bottom: 2px solid var(--dim); }
+
+.sources-list { list-style: none; }
+.sources-list li { padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.9em; }
+.sources-list li:last-child { border: none; }
+.sources-list .src-status { float: right; }
+
+footer { text-align: center; padding: 30px 0 20px; border-top: 1px solid var(--border); margin-top: 30px; color: var(--dim); font-size: 0.8em; }
+footer a { color: var(--blue); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>MrBeast <span>$1M</span> Puzzle Tracker</h1>
+  <div class="subtitle">Collaborative AI-Assisted Puzzle Hunt &mdash; Super Bowl LX 2026</div>
+  <div class="deadline">Deadline: April 2, 2026 &bull; Designed by Lone Shark Games</div>
+  <div class="status-bar">
+    <span class="status-pill pill-red">UNSOLVED</span>
+    <span class="status-pill pill-amber">0/9 Words Found</span>
+    <span class="status-pill pill-green">Tracking 8 Sources</span>
+  </div>
+</header>
+
+<section id="nine-word-clue">
+  <h2>The 9-Word Clue</h2>
+  <p style="color:var(--dim);font-size:0.9em;margin-bottom:8px;">"Each puzzle ends in a word that makes part of a 9-word clue, in order. That will help define the nature of the search."</p>
+  <div class="word-grid">
+    <div class="word-box"><div class="num">Word 1</div><div class="letters">_____</div><div class="count">5 letters</div></div>
+    <div class="word-box"><div class="num">Word 2</div><div class="letters">_________</div><div class="count">9 letters</div></div>
+    <div class="word-box"><div class="num">Word 3</div><div class="letters">_____</div><div class="count">5 letters</div></div>
+    <div class="word-box"><div class="num">Word 4</div><div class="letters">_______</div><div class="count">7 letters</div></div>
+    <div class="word-box"><div class="num">Word 5</div><div class="letters">________</div><div class="count">8 letters</div></div>
+    <div class="word-box"><div class="num">Word 6</div><div class="letters">____</div><div class="count">4 letters</div></div>
+    <div class="word-box"><div class="num">Word 7</div><div class="letters">_________</div><div class="count">9 letters</div></div>
+    <div class="word-box"><div class="num">Word 8</div><div class="letters">______</div><div class="count">6 letters</div></div>
+    <div class="word-box"><div class="num">Word 9</div><div class="letters">_____</div><div class="count">5 letters</div></div>
+  </div>
+</section>
+
+<section id="puzzles">
+  <h2>The 9 Playlist Puzzles</h2>
+  <table>
+    <thead><tr><th>#</th><th>Video</th><th>Puzzle Type</th><th>Status</th><th>Word</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><a href="https://www.youtube.com/watch?v=mwKJfNYwvm8">I Built 100 Wells In Africa</a></td><td>TBD</td><td><span class="badge badge-todo">TODO</span></td><td>&mdash;</td></tr>
+      <tr><td>2</td><td><a href="https://www.youtube.com/watch?v=VGvj6bj4Sog">Changing the Lives of 600 Strangers</a></td><td>Sudoku (LIFECHANGE)</td><td><span class="badge badge-wip">WIP</span></td><td>&mdash;</td></tr>
+      <tr><td>3</td><td><a href="https://www.youtube.com/watch?v=cV2gBU6hKfY">I Cleaned The World's Dirtiest Beach</a></td><td>TBD</td><td><span class="badge badge-todo">TODO</span></td><td>&mdash;</td></tr>
+      <tr><td>4</td><td><a href="https://www.youtube.com/watch?v=Xj0Jtjg3lHQ">$1 vs $500,000 Experiences!</a></td><td>TBD</td><td><span class="badge badge-todo">TODO</span></td><td>&mdash;</td></tr>
+      <tr><td>5</td><td><a href="https://www.youtube.com/watch?v=e-If_d_bzfI">POKEMON GO STEREOTYPES</a></td><td>TBD</td><td><span class="badge badge-todo">TODO</span></td><td>&mdash;</td></tr>
+      <tr><td>6</td><td><a href="https://www.youtube.com/watch?v=U_LlX4t0A9I">$10K Every Day You Survive Wilderness</a></td><td>TBD</td><td><span class="badge badge-todo">TODO</span></td><td>&mdash;</td></tr>
+      <tr><td>7</td><td><a href="https://www.youtube.com/watch?v=lOKASgtr6kU">I Adopted 100 Dogs!</a></td><td>TBD</td><td><span class="badge badge-todo">TODO</span></td><td>&mdash;</td></tr>
+      <tr><td>8</td><td><a href="https://www.youtube.com/watch?v=NDsO1LT_0lw">I Spent 100 Hours Inside The Pyramids!</a></td><td>TBD</td><td><span class="badge badge-todo">TODO</span></td><td>&mdash;</td></tr>
+      <tr><td>9</td><td><a href="https://www.youtube.com/watch?v=yXWw0_UfSFg">Anything You Can Fit In The Circle</a></td><td>TBD</td><td><span class="badge badge-todo">TODO</span></td><td>&mdash;</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="ad-clues">
+  <h2>Super Bowl Ad &mdash; Decoded Clues</h2>
+  <div class="clue-card">
+    <h4>Laser Sequence &rarr; "LASER MIX UP"</h4>
+    <p>26 dots on laser door (=alphabet). Hits in order: <code>12-1-19-5-18</code> <code>13-9-24</code> <code>21-16</code>. A=1 decode: <strong>LASER MIX UP</strong></p>
+  </div>
+  <div class="clue-card">
+    <h4>Dollar Bills &rarr; "CASH TENT"</h4>
+    <p>Dollar bills marked in red in first frame decode to <code>CASH TENT</code></p>
+  </div>
+  <div class="clue-card">
+    <h4>Bird on Wire &rarr; "DINAMODI"</h4>
+    <p>Uses Birds-on-a-Wire cipher. Letters: <code>D-I-N-A-M-O-D-I</code>. Anagrams: "I AM DINO"? "DOMAIN ID"?</p>
+  </div>
+  <div class="clue-card">
+    <h4>Morse Code &rarr; "TRUST AI"</h4>
+    <p>Flashing light encodes Morse. Decoded: <code>TRUST AI</code> (Salesforce/Slackbot theme)</p>
+  </div>
+  <div class="clue-card">
+    <h4>Caesar Cipher Reference</h4>
+    <p>Bust/statue in ad with L/R rotation sequences. Needs further analysis.</p>
+  </div>
+  <div class="clue-card">
+    <h4>Flash Symbols (unresolved)</h4>
+    <p>Spider &bull; Sine wave &bull; Elephant &bull; 10<sup>5</sup> (100,000) &bull; Spinning wheel with number sequences</p>
+  </div>
+</section>
+
+<section id="sudoku">
+  <h2>Puzzle #2 &mdash; LIFECHANGE Sudoku</h2>
+  <p style="color:var(--dim);font-size:0.9em;margin-bottom:10px;">9 letters from "LIFECHANGE" replace digits 1-9. Solving the grid is step 1 &mdash; extraction method needed from another source.</p>
+  <div class="sudoku-grid">
+    <div class="cell empty br">.</div><div class="cell given">L</div><div class="cell empty bb">.</div><div class="cell empty br">.</div><div class="cell empty">.</div><div class="cell given bb">N</div><div class="cell empty br">.</div><div class="cell given">G</div><div class="cell empty bb">.</div>
+    <div class="cell given br">C</div><div class="cell empty">.</div><div class="cell empty bb">.</div><div class="cell empty br">.</div><div class="cell given">I</div><div class="cell empty bb">.</div><div class="cell given br">N</div><div class="cell empty">.</div><div class="cell empty bb">.</div>
+    <div class="cell empty br bb">.</div><div class="cell empty bb">.</div><div class="cell given bb">I</div><div class="cell empty br bb">.</div><div class="cell empty bb">.</div><div class="cell given bb">L</div><div class="cell empty br bb">.</div><div class="cell given bb">F</div><div class="cell empty bb">.</div>
+    <div class="cell given br">G</div><div class="cell empty">.</div><div class="cell empty bb">.</div><div class="cell empty br">.</div><div class="cell given">E</div><div class="cell empty bb">.</div><div class="cell given br">C</div><div class="cell empty">.</div><div class="cell empty bb">.</div>
+    <div class="cell empty br">.</div><div class="cell given">H</div><div class="cell empty bb">.</div><div class="cell empty br">.</div><div class="cell empty">.</div><div class="cell given bb">A</div><div class="cell empty br">.</div><div class="cell given">E</div><div class="cell empty bb">.</div>
+    <div class="cell given br bb">F</div><div class="cell empty bb">.</div><div class="cell empty bb">.</div><div class="cell empty br bb">.</div><div class="cell given bb">N</div><div class="cell empty bb">.</div><div class="cell given br bb">I</div><div class="cell empty bb">.</div><div class="cell empty bb">.</div>
+    <div class="cell empty br">.</div><div class="cell empty">.</div><div class="cell given bb">F</div><div class="cell empty br">.</div><div class="cell empty">.</div><div class="cell given bb">G</div><div class="cell empty br">.</div><div class="cell given">I</div><div class="cell empty bb">.</div>
+    <div class="cell given br">N</div><div class="cell empty">.</div><div class="cell empty bb">.</div><div class="cell empty br">.</div><div class="cell given">L</div><div class="cell empty bb">.</div><div class="cell given br">A</div><div class="cell empty">.</div><div class="cell empty bb">.</div>
+    <div class="cell empty br bb">.</div><div class="cell given bb">C</div><div class="cell empty bb">.</div><div class="cell empty br bb">.</div><div class="cell empty bb">.</div><div class="cell given bb">H</div><div class="cell empty br bb">.</div><div class="cell given bb">N</div><div class="cell empty bb">.</div>
+  </div>
+</section>
+
+<section id="hints">
+  <h2>Official Hints &amp; Clues</h2>
+  <div class="clue-card">
+    <h4>Hint #1 (Feb 9)</h4>
+    <p>"Almost everything Jimmy passes by in the ad is a clue. Look up, down, forward, backward, and behind the scenes."</p>
+    <p>"The bank video needs content FROM the Super Bowl ad to solve."</p>
+    <p>"Some of these puzzles use codes you can find online."</p>
+  </div>
+  <div class="clue-card">
+    <h4>GMA Hint (Feb 10)</h4>
+    <p>"Look for some numbers in photos that I took at the Super Bowl."</p>
+  </div>
+</section>
+
+<section id="redacted">
+  <h2>Unlockable Intel</h2>
+  <div class="contribute-box">
+    <h3>Want the full decoded clue map?</h3>
+    <p>Some findings are held back. Submit a PR with a new clue, theory, or solved puzzle piece to unlock them.</p>
+    <p style="margin-top:10px;">
+      Redacted finding #1: <span class="redacted">XXXXXXXXXXXXXXXXXX</span><br>
+      Redacted finding #2: <span class="redacted">XXXXXXXXXXXXXXXXXX</span><br>
+      Redacted finding #3: <span class="redacted">XXXXXXXXXXXXXXXXXX</span>
+    </p>
+    <p style="margin-top:12px;font-size:0.85em;color:var(--accent);">Fork &rarr; Add your findings &rarr; PR &rarr; Get access</p>
+  </div>
+</section>
+
+<section id="sources-monitor">
+  <h2>Source Monitoring</h2>
+  <p style="color:var(--dim);font-size:0.9em;margin-bottom:10px;">Sources we're actively tracking for new clues. Updated via <code>scripts/check_sources.py</code>.</p>
+  <ul class="sources-list">
+    <li><a href="https://mrbeast.salesforce.com/">mrbeast.salesforce.com</a> <span class="src-status badge badge-wip">watching</span></li>
+    <li><a href="https://www.youtube.com/playlist?list=PLj-VLkYRjRxm5HVGFVpPP5W7jkvvzd1q7">YouTube Playlist (9 videos)</a> <span class="src-status badge badge-wip">watching</span></li>
+    <li><a href="https://www.reddit.com/user/BeastForce67/">Reddit u/BeastForce67</a> <span class="src-status badge badge-wip">watching</span></li>
+    <li><a href="https://x.com/MrBeast">@MrBeast on X</a> <span class="src-status badge badge-wip">watching</span></li>
+    <li><a href="https://www.instagram.com/mrbeast/">@MrBeast Instagram</a> <span class="src-status badge badge-wip">watching</span></li>
+    <li><a href="https://lonesharkgames.com/the-puzzle-vault/">Lone Shark Games</a> <span class="src-status badge badge-wip">watching</span></li>
+    <li><a href="https://www.argn.com/">ARGNet</a> <span class="src-status badge badge-done">scraped</span></li>
+    <li><a href="https://manifold.markets/CDBiddulph/when-will-mr-beasts-super-bowl-puzz">Manifold Markets</a> <span class="src-status badge badge-done">scraped</span></li>
+  </ul>
+</section>
+
+<section id="red-herrings">
+  <h2>Confirmed Red Herrings</h2>
+  <table>
+    <thead><tr><th>Item</th><th>Why It's Fake</th></tr></thead>
+    <tbody>
+      <tr><td>"Red Herring Bank" name</td><td>Name literally says it's a red herring</td></tr>
+      <tr><td>Acrostic in ad</td><td>Spells "this means nothing I just wanted to waste your time lol"</td></tr>
+    </tbody>
+  </table>
+  <p style="color:var(--dim);font-size:0.85em;margin-top:6px;">Note: Even red herring scenes contain real clues (barcode, calendars). Stay thorough.</p>
+</section>
+
+<footer>
+  Built with AI &bull; <a href="https://github.com/tillo13/mr_beast_puzzle">GitHub</a> &bull; PRs welcome &bull; Last updated: <span id="lastUpdate"></span>
+  <script>document.getElementById('lastUpdate').textContent=new Date().toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'});</script>
+</footer>
+</div>
+
+<script>
+// Click redacted items to show the contribute message
+document.querySelectorAll('.redacted').forEach(el => {
+  el.addEventListener('click', () => {
+    el.style.background = 'rgba(239,68,68,0.3)';
+    el.style.color = 'var(--warn)';
+    el.textContent = 'Submit a PR to unlock!';
+  });
+});
+</script>
+</body>
+</html>

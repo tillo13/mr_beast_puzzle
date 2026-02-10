@@ -1,0 +1,22 @@
+[
+  { "name": "puzzle-1", "color": "1d76db", "description": "Puzzle 1: Wells/Africa (Pinterest)" },
+  { "name": "puzzle-2", "color": "1d76db", "description": "Puzzle 2: LIFECHANGE Sudoku (Reddit)" },
+  { "name": "puzzle-3", "color": "1d76db", "description": "Puzzle 3: Dirtiest Beach (Imgur)" },
+  { "name": "puzzle-4", "color": "1d76db", "description": "Puzzle 4: Experiences (ImageShack)" },
+  { "name": "puzzle-5", "color": "1d76db", "description": "Puzzle 5: Pokemon Go (Photobucket)" },
+  { "name": "puzzle-6", "color": "1d76db", "description": "Puzzle 6: Wilderness (Medium)" },
+  { "name": "puzzle-7", "color": "1d76db", "description": "Puzzle 7: Adopted Dogs (Pixelfed)" },
+  { "name": "puzzle-8", "color": "1d76db", "description": "Puzzle 8: Pyramids (imgpile)" },
+  { "name": "puzzle-9", "color": "1d76db", "description": "Puzzle 9: Circle (500px)" },
+  { "name": "crossword", "color": "5319e7", "description": "The crossword puzzle" },
+  { "name": "super-bowl-ad", "color": "e99695", "description": "Clues from the Super Bowl ad" },
+  { "name": "meta-clue", "color": "d93f0b", "description": "9-word meta-clue assembly" },
+  { "name": "clue", "color": "0e8a16", "description": "A discovered clue or piece of evidence" },
+  { "name": "solution", "color": "006b75", "description": "A proposed puzzle solution" },
+  { "name": "theory", "color": "fbca04", "description": "An unverified theory or hypothesis" },
+  { "name": "confirmed", "color": "0e8a16", "description": "Verified and confirmed finding" },
+  { "name": "red-herring", "color": "b60205", "description": "Confirmed red herring / dead end" },
+  { "name": "needs-verification", "color": "c5def5", "description": "Needs someone else to verify" },
+  { "name": "extraction-method", "color": "d4c5f9", "description": "How to extract answer from solved puzzle" },
+  { "name": "question", "color": "cc317c", "description": "Question about the puzzle or repo" }
+]

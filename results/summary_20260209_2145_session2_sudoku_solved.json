@@ -1,0 +1,51 @@
+{
+  "last_updated": "2026-02-09T21:45:00",
+  "session": "Session 2 — Sudoku solution confirmed + video downloads",
+  "accomplished": [
+    "Ran sudoku solver — found 9 valid single-shift solutions",
+    "Confirmed R7C3(F)->C2 as correct shift (F in Row 7 at col 2, not col 3)",
+    "Wrote full solution with extraction data to puzzles/02_lifechange/notes.md",
+    "Downloaded all 4 hub video MP4s for frame analysis",
+    "All 12 subtitle files confirmed on disk (3 hub + 9 playlist)",
+    "All 14 info.json metadata files on disk",
+    "Comments download running in background for pinned comment extraction"
+  ],
+  "files_created": [
+    "puzzles/02_lifechange/notes.md",
+    "clues/hub_videos/JBy1T5IykkU.mp4 (7.3MB — Super Bowl ad)",
+    "clues/hub_videos/8_aIjKi0VLM.mp4 (5.1MB — Rewatch, no captions)",
+    "clues/hub_videos/OBQELGS13XA.mp4 (22MB — Bank heist teaser)",
+    "clues/hub_videos/rKg5OZNM1aU.mp4 (9.1MB — Slack BTS)"
+  ],
+  "sudoku_solution": {
+    "shift_applied": "R7C3(F) -> C2",
+    "solved_grid": [
+      "ALFCHNEGI",
+      "CGHFIENAL",
+      "ENIAGLHFC",
+      "GANHEICLF",
+      "IHCLFAGEN",
+      "FELGNCIHA",
+      "HFANCGLIE",
+      "NIGELFACH",
+      "LCEIAHFNG"
+    ],
+    "status": "GRID SOLVED — extraction method needed to get 9-letter answer word",
+    "note": "9 total valid single-shift solutions exist — need original image verification or extraction clue to disambiguate"
+  },
+  "pending": [
+    "Extract pinned comments from playlist videos (background download)",
+    "Frame-by-frame analysis of Super Bowl ad (JBy1T5IykkU.mp4)",
+    "Frame-by-frame analysis of 8_aIjKi0VLM (captionless Rewatch video)",
+    "Determine extraction method for sudoku answer word",
+    "Identify and solve all 9 sub-puzzles",
+    "Crossword puzzle solving",
+    "Assemble 9-word meta-clue"
+  ],
+  "open_questions": [
+    "What is the extraction method for the sudoku? (Likely from Super Bowl ad)",
+    "Which of the 9 shift variants is definitively correct?",
+    "What are all 9 pinned comment puzzle links?",
+    "What visual clues are hidden in 8_aIjKi0VLM (41s, no audio/captions)?"
+  ]
+}

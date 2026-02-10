@@ -1,0 +1,65 @@
+name: Auto-Label Issues
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const title = context.payload.issue.title || '';
+            const labels = [];
+
+            // Map puzzle selections to labels
+            const puzzleMap = {
+              'Puzzle 1': 'puzzle-1',
+              'Wells/Africa': 'puzzle-1',
+              'Puzzle 2': 'puzzle-2',
+              'LIFECHANGE': 'puzzle-2',
+              'Sudoku': 'puzzle-2',
+              'Puzzle 3': 'puzzle-3',
+              'Dirtiest Beach': 'puzzle-3',
+              'Puzzle 4': 'puzzle-4',
+              'Experiences': 'puzzle-4',
+              'Puzzle 5': 'puzzle-5',
+              'Pokemon': 'puzzle-5',
+              'Puzzle 6': 'puzzle-6',
+              'Wilderness': 'puzzle-6',
+              'Puzzle 7': 'puzzle-7',
+              'Adopted Dogs': 'puzzle-7',
+              'Puzzle 8': 'puzzle-8',
+              'Pyramids': 'puzzle-8',
+              'Puzzle 9': 'puzzle-9',
+              'Circle': 'puzzle-9',
+              'Crossword': 'crossword',
+              'Super Bowl Ad': 'super-bowl-ad',
+              'Meta-clue': 'meta-clue'
+            };
+
+            for (const [keyword, label] of Object.entries(puzzleMap)) {
+              if (body.includes(keyword) || title.includes(keyword)) {
+                if (!labels.includes(label)) labels.push(label);
+              }
+            }
+
+            // Add type labels based on title prefix
+            if (title.startsWith('[CLUE]')) labels.push('clue');
+            if (title.startsWith('[SOLVED]')) labels.push('solution');
+            if (title.startsWith('[THEORY]')) labels.push('theory');
+
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+                labels: labels
+              });
+            }

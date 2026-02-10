@@ -1,0 +1,58 @@
+name: Daily Source Monitor
+
+on:
+  schedule:
+    # Run daily at 8am Pacific (3pm UTC)
+    - cron: '0 15 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  check-sources:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run source monitor
+        id: monitor
+        run: |
+          python scripts/check_sources.py 2>&1 | tee monitor_output.txt
+          # Check if any sources changed
+          if grep -q "CHANGED" monitor_output.txt; then
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit updated logs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sources/*/updates.log
+          git diff --cached --quiet || git commit -m "chore: daily source monitor $(date +%Y-%m-%d)"
+          git push || true
+
+      - name: Create issue if changes detected
+        if: steps.monitor.outputs.changes_detected == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('monitor_output.txt', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[AUTO] Source changes detected — ${new Date().toISOString().split('T')[0]}`,
+              body: `The daily source monitor detected changes:\n\n\`\`\`\n${output}\n\`\`\`\n\nCheck \`sources/*/updates.log\` for details.`,
+              labels: ['clue', 'needs-verification']
+            });
