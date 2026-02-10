@@ -54,6 +54,7 @@ RULES:
 - Save images you download to puzzles/{folder}/
 - Write notes.md with: puzzle type, solve process, grid solution, extraction attempt, answer word (or best candidates)
 - If you can't extract the final word, document what you solved and what's missing
+- Update your puzzle's entry in results/state.json when done (status, puzzle_type, grid_solved, answer_word)
 - Read CLAUDE.md for repo conventions
 ```
 
@@ -95,12 +96,13 @@ Use these to validate answer words:
 
 After all 9 agents finish:
 
-1. Read all 9 `notes.md` files
-2. Check which agents extracted answer words vs. got stuck
+1. Read `results/state.json` — check which puzzles have answer words vs. are stuck
+2. Read all 9 `puzzles/*/notes.md` files for detailed findings
 3. Cross-reference stuck agents with findings from other puzzles
-4. Attempt meta-clue assembly: `_____ _________ _____ _______ ________ ____ _________ ______ _____`
-5. Validate: does the assembled phrase read as an INSTRUCTION?
-6. Follow the instruction to find the hidden code
+4. Update `results/state.json` meta_clue.words array with extracted words
+5. Attempt meta-clue assembly: `_____ _________ _____ _______ ________ ____ _________ ______ _____`
+6. Validate: does the assembled phrase read as an INSTRUCTION?
+7. Follow the instruction to find the hidden code
 
 ## Estimated Resource Usage
 

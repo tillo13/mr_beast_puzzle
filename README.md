@@ -1,145 +1,135 @@
-# 🔐 MrBeast Million Dollar Puzzle — AI-Assisted Treasure Hunt
+# MrBeast Million Dollar Puzzle — A GitHub-Native Project Experiment
 
-> **$1,000,000 prize. First to crack the code wins. Nobody has solved it yet.**
+> **Can you run an entire collaborative, time-pressured project using nothing but GitHub?** Issues, PRs, Pages, Actions, Discussions, templates, AI agents — the works. This repo is the experiment.
 
-This repo is a collaborative, AI-assisted attempt to solve the [MrBeast x Salesforce Million Dollar Puzzle](https://mrbeast.salesforce.com/) launched during Super Bowl LX (February 8, 2026).
+## What This Is
 
-## 🚀 What is this?
+I wanted to stress-test GitHub's full toolchain on a real, non-trivial project — not a toy demo, but something with actual stakes, deadlines, and collaboration potential. The [MrBeast x Salesforce Million Dollar Puzzle](https://mrbeast.salesforce.com/) (Super Bowl LX, Feb 2026) turned out to be the perfect use case:
 
-MrBeast aired a Super Bowl ad challenging the world to solve a series of interconnected puzzles designed by [Lone Shark Games](https://shop.lonesharkgames.com/). The first person to crack the hidden code and Slack it to Jimmy Donaldson wins **$1,000,000 cash**.
+- **Time-bounded** — hard deadline of April 2, 2026
+- **Multi-faceted** — 9 sub-puzzles across different platforms, each requiring different techniques
+- **Naturally collaborative** — designed so no single person can solve everything alone
+- **AI-friendly** — perfect for testing Claude Code and other AI-assisted workflows
+- **Real stakes** — there's a $1M prize, which keeps things interesting
 
-- **Status:** 🔴 UNSOLVED (as of Feb 9, 2026)
-- **Deadline:** April 2, 2026
-- **Eligibility:** US, Canada, Mexico (18+)
-- **Designed by:** Lone Shark Games (pros behind Wired's manhunt, CAH puzzles)
+The puzzle itself is a multi-step treasure hunt designed by [Lone Shark Games](https://shop.lonesharkgames.com/): 9 YouTube videos link to 9 sub-puzzles, each yielding a word. The 9 words form an instruction that leads to a hidden code. First to Slack the code to MrBeast wins.
 
-## 📁 Repo Structure
+## Why GitHub?
+
+The puzzle community is **everywhere** — Reddit threads, Discord servers, ARGNet articles, Twitter/X posts, YouTube comments, TikTok breakdowns — and none of it is centralized. Findings get buried in comment threads, theories get lost across platforms, and there's no single place to track what's been solved, what's been tried, and what's still open.
+
+GitHub solves this naturally:
+
+- **Everything in one place** — puzzle images, solver scripts, analysis notes, community intel, all version-controlled
+- **Structure without overhead** — Issues for clues, PRs for solutions, Projects for tracking status across 9 puzzles
+- **Built-in collaboration** — fork it, open a PR, leave a comment — no Discord invites or Reddit accounts needed
+- **Persistence** — nothing gets buried in a chat scroll; every finding is filed and searchable
+- **AI-native** — `CLAUDE.md` gives AI agents full project context; Claude Code can read the repo and contribute directly
+
+This puzzle is scattered across 9 different platforms by design. A GitHub repo is the right tool to pull it all together.
+
+## The GitHub Experiment
+
+This repo uses (or plans to use) the following GitHub features as the **sole project infrastructure**:
+
+| Feature | How It's Used |
+|---------|---------------|
+| **Issues + Templates** | Clue reports, puzzle solutions, theory proposals — all structured with YAML templates |
+| **Pull Requests** | All findings submitted as PRs with review workflows |
+| **GitHub Pages** | Live puzzle tracker dashboard at `docs/index.html` |
+| **Discussions** | Open-ended brainstorming and strategy talk |
+| **Projects** | Kanban board tracking puzzle status across all 9 sub-puzzles |
+| **Actions** | Automated source monitoring, daily hint checks |
+| **CLAUDE.md** | AI agent instructions — Claude Code reads this file for context |
+| **Branch strategy** | `clue/`, `solve/`, `theory/` prefixed branches for organized contributions |
+
+The goal is to see how far GitHub alone can take a fast-moving, multi-person research + problem-solving effort.
+
+## Repo Structure
 
 ```
 mrbeast_puzzle/
-├── README.md                    ← You are here
-├── CLAUDE.md                    ← AI agent instructions
+├── puzzles/                     # One folder per sub-puzzle (images, solvers, notes)
+│   ├── 01_wells_africa/
+│   ├── 02_lifechange/           # Sudoku variant — grid solved
+│   ├── ...
+│   └── 09_circle/
 │
-├── puzzles/                     ← One folder per identified puzzle
-│   ├── 01_wells_africa/         ← Puzzle 1
-│   ├── 02_lifechange/           ← Puzzle 2: LIFECHANGE Sudoku (solver + image)
-│   ├── 03_dirtiest_beach/       ← Puzzle 3
-│   ├── ...                      ← Puzzles 4-9
-│   └── crossword/               ← Crossword puzzle (video # TBD)
+├── clues/                       # Raw materials (ad frames, video stills, social media)
+│   ├── super_bowl_ad/frames/
+│   ├── teaser_videos/
+│   └── daily_hints/
 │
-├── clues/                       ← Raw clue materials (not puzzle-specific)
-│   ├── super_bowl_ad/           ← Frame extractions from the ad
-│   ├── teaser_videos/           ← Bank heist, Slack, door gag clues
-│   ├── social_media/            ← X/Instagram/TikTok screenshots
-│   └── daily_hints/             ← Official hints as they drop
-│
-├── sources/                     ← External intel & community findings
-│   ├── reddit/                  ← BeastForce67 posts, megathreads
-│   ├── manifold/                ← Manifold Markets decoded clues
-│   └── ...                      ← ARGNet, Lone Shark, Salesforce hub
-│
-├── scripts/                     ← Shared automation (source monitor, etc.)
-│
-└── docs/                        ← All documentation & GitHub Pages
-    ├── index.html               ← Live puzzle tracker dashboard
-    ├── how_to_attempt.md        ← Full battle plan & agent workflow
-    ├── nine_word_clue.md        ← Meta-clue assembly tracker
-    ├── progress.md              ← Daily progress log
-    ├── potential_tools.md       ← Reusable tools catalog
-    └── testing_suite_methodology.md
+├── sources/                     # External intel (Reddit, ARGNet, community findings)
+├── scripts/                     # Automation (source monitors, etc.)
+├── results/                     # Cross-cutting state: state.json, puzzle links
+└── docs/                        # GitHub Pages dashboard + strategy docs
 ```
 
-## 🧠 The Key Puzzle Structure
+## Getting Started — Table Stakes
 
-The puzzle has a known architecture (from official Hint #1):
+**This repo does NOT include puzzle images.** MrBeast and Lone Shark Games deliberately scattered puzzles across 9 different platforms — some behind Cloudflare walls, some on obscure image hosts, some requiring you to physically go find them. That's part of the game.
 
-1. **9 YouTube videos** in a playlist each have a **pinned comment** linking to a sub-puzzle
-2. Each sub-puzzle, when solved, yields **one word**
-3. The 9 words form a **meta-clue** with word lengths: **5, 9, 5, 7, 8, 4, 9, 6, 5**
-4. That meta-clue "defines the nature of the search" — it tells you what to do NEXT
-5. Follow the trail → find the hidden code → Slack it to Jimmy → 💰
+To participate, you need to **go find the puzzle images yourself**:
 
-## 🔗 Key Links
+1. Start at the [9-video playlist](https://www.youtube.com/playlist?list=PLj-VLkYRjRxm5HVGFVpPP5W7jkvvzd1q7)
+2. Find the **pinned comment** on each video (posted by BeastForce67 accounts)
+3. Follow each link to the puzzle on its platform (Pinterest, Reddit, Imgur, Medium, etc.)
+4. Download the puzzle images to your local `puzzles/XX_*/` folders
+5. Similarly, grab the Super Bowl ad frames yourself: `yt-dlp` the ad video and extract with `ffmpeg`
+
+The URLs for all 9 puzzles are documented in [`results/puzzle_links.md`](results/puzzle_links.md). What you'll find here is the **analysis, solver code, and strategy** — not the raw materials. Respect the game.
+
+## Current Puzzle Status
+
+| # | Puzzle | Platform | Status |
+|---|--------|----------|--------|
+| 1 | Wells/Africa | Pinterest | Solving — drop-quote/crossword clues |
+| 2 | LIFECHANGE Sudoku | Reddit | **Grid solved** — extraction unknown |
+| 3 | Dirtiest Beach | Imgur | Solving — TV show identification |
+| 4 | Experiences | ImageShack | Solving — location/stencil word |
+| 5 | Pokemon Go | Photobucket | Solving — cage/crossword grid |
+| 6 | Wilderness | Medium | **Grid solved** — Tents & Trees, unique solution found |
+| 7 | Adopted Dogs | Pixelfed | Solving — 100-dog visual grid |
+| 8 | Pyramids | imgpile | Not started |
+| 9 | Circle | 500px | Not started |
+
+### Super Bowl Ad Analysis
+| Element | Status |
+|---------|--------|
+| QR code | **Decoded** → `mrbeast.salesforce.com/bts` |
+| Slack emojis | **Identified** — camel, dinosaur, coin, anchor, tent |
+| Control room monitors | 9 symbols catalogued, mapping to puzzles unknown |
+| Vault rim numbers | Partially read — need MrBeast's Super Bowl photos |
+| Braille on blast door | Not decoded |
+
+## Want to Collaborate?
+
+This is an open experiment on two fronts — **the puzzle** and **GitHub as a project platform**. Either angle is a valid reason to jump in.
+
+- Found a clue the community missed? Open an issue.
+- Have a better way to use GitHub Actions for this? Open a PR.
+- Want to fork it and run your own AI agents against the puzzles? Go for it.
+- Downloaded puzzle images and solved something? Share your analysis (not the images) as a PR.
+
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for structure and conventions.
+
+## Key Links
 
 | Resource | URL |
 |----------|-----|
 | Official Hub | https://mrbeast.salesforce.com/ |
-| Super Bowl Ad | [YouTube - "The Vault"](https://www.youtube.com/results?search_query=salesforce+super+bowl+2026+mrbeast+the+vault) |
 | 9-Video Playlist | https://www.youtube.com/playlist?list=PLj-VLkYRjRxm5HVGFVpPP5W7jkvvzd1q7 |
-| Bank Heist Teaser | https://www.youtube.com/watch?v=OBQELGS13XA |
-| Known Reddit Puzzle | https://www.reddit.com/user/BeastForce67/comments/1qxxmdn/puzzle/ |
 | ARGNet Analysis | https://www.argn.com/2026/02/start_slacking_off_with_mrbeasts_million_dollar_puzzle_hunt/ |
+| Puzzle Links | [results/puzzle_links.md](results/puzzle_links.md) |
 
-## 🤖 Using This with Claude Code
+## Timeline
 
-The [`docs/how_to_attempt.md`](docs/how_to_attempt.md) file is designed to be fed directly to Claude Code as an agentic task runner. It contains:
-
-- Prioritized task lists for AI-assisted solving
-- All known URLs and entry points
-- Frame-by-frame analysis targets for the Super Bowl ad
-- AI-specific techniques (OCR, cipher detection, steganography, audio spectrograms)
-- Cross-referencing strategies for connecting puzzle pieces
-- A daily monitoring checklist
-
-```bash
-# Clone and start hunting
-git clone https://github.com/tillo13/mr_beast_puzzle.git
-cd mr_beast_puzzle
-# Feed how_to_attempt.md to Claude Code and start solving!
-```
-
-## 🤝 Want to Join the Hunt?
-
-PRs welcome! See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide.
-
-**Quick start:**
-1. Fork this repo
-2. Pick a puzzle, clue, or theory to investigate
-3. Add your findings to the appropriate directory
-4. Submit a PR using the template
-
-**Or just open an issue:**
-- [Report a clue](../../issues/new?template=clue_found.yml) you found
-- [Submit a solution](../../issues/new?template=puzzle_solution.yml) to a puzzle
-- [Propose a theory](../../issues/new?template=theory.yml) about how things connect
-
-**Ground rules:**
-- Document everything — screenshots, links, reasoning
-- Label theories vs. confirmed findings
-- Don't delete other people's work, even if you disagree
-- Speed matters but accuracy matters more
-
-## 📋 Current Progress
-
-| Puzzle # | Video | Puzzle Type | Solved? | Answer Word |
-|----------|-------|-------------|---------|-------------|
-| 1 | TBD | TBD | ❌ | _ _ _ _ _ (5) |
-| 2 | TBD | TBD | ❌ | _ _ _ _ _ _ _ _ _ (9) |
-| 3 | TBD | TBD | ❌ | _ _ _ _ _ (5) |
-| 4 | TBD | TBD | ❌ | _ _ _ _ _ _ _ (7) |
-| 5 | TBD | TBD | ❌ | _ _ _ _ _ _ _ _ (8) |
-| 6 | TBD | TBD | ❌ | _ _ _ _ (4) |
-| 7 | TBD | TBD | ❌ | _ _ _ _ _ _ _ _ _ (9) |
-| 8 | TBD | TBD | ❌ | _ _ _ _ _ _ (6) |
-| 9 | TBD | TBD | ❌ | _ _ _ _ _ (5) |
-
-**9-Word Clue:** `_____ _________ _____ _______ ________ ____ _________ ______ _____`
-
-**Final Code:** ❓
-
-## ⏰ Timeline
-
-- **Dec 29, 2025:** MrBeast tweets Super Bowl commercial idea
-- **Jan 2026:** Teaser videos drop with hidden clues
-- **Feb 6, 2026:** MrBeast on Tonight Show (possible clues)
-- **Feb 8, 2026:** Super Bowl ad airs, puzzle officially launches
-- **Feb 9, 2026:** Hint #1 released, GMA appearance with photo hint
+- **Feb 8, 2026:** Super Bowl ad airs, puzzle launches
+- **Feb 9, 2026:** Hint #1 released (9-word clue structure)
 - **Feb 10+:** Daily clue drops expected
-- **TBD:** Slackbot activated for puzzle assistance
 - **Apr 2, 2026:** Contest deadline
 
 ---
 
-*Built with 🧠 + 🤖 by [@tillo13](https://github.com/tillo13) and Claude*
-
-*Let's go get that million dollars.*
+*Built by [@tillo13](https://github.com/tillo13) with Claude Code — experimenting with GitHub as a full project platform.*

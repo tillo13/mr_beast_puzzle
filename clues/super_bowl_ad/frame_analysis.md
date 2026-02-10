@@ -485,22 +485,122 @@ The control room (frames 14-26) contains numerous monitors displaying deliberate
 
 ---
 
-## PRIORITY INVESTIGATION TARGETS
+---
 
-1. **VAULT RIM NUMBERS (frames 51-53):** These are almost certainly extraction keys. A higher-resolution capture of the vault door rim is critically needed. The sequence of digits with +/- operators running around the full circumference likely provides the key to extracting answer words from the 9 sub-puzzles.
+## DECODED ITEMS (confirmed)
 
-2. **BRAILLE DOTS on blast door (frames 30-36):** These two groups of dots likely spell something in Braille. Need higher resolution to map the exact dot positions.
+### 1. QR CODE — DECODED
+- **Frames**: 57-64 (aerial view of military compound)
+- **Decoded from**: `qr_hires/qr_0063.jpg` using OpenCV QRCodeDetector
+- **URL**: `https://sforce.co/4bAAGMH?r=qr`
+- **Redirects to**: `https://mrbeast.salesforce.com/bts` (301 redirect)
+- **Status**: The /bts page returns **403 Forbidden** — likely requires registration/login or browser access
+- **Significance**: "bts" = "behind the scenes" — may contain additional puzzle content or extraction instructions
 
-3. **n^3 = m^2 formula (frames 24-26):** This mathematical equation has specific solutions (e.g., the only integer solution where both sides are perfect powers is n=m=0 or n=m=1, unless considering n^3=m^2 which has solutions like n=4,m=8 or n=9,m=27). This likely relates to a specific puzzle.
+### 2. SLACK EMOJI REACTIONS — IDENTIFIED
+- **Frames**: 27-29 (below "Slackbot: Good luck!" message)
+- **5 emojis confirmed** (left to right):
+  1. **Camel** 🐪 — possibly maps to Pyramids puzzle (P8, Egypt theme)
+  2. **Dinosaur** 🦕 (sauropod/brontosaurus) — possibly maps to Pokemon Go (P5)
+  3. **Gold coin** 🪙 — possibly maps to Circle puzzle (P9, "anything in circle")
+  4. **Anchor** ⚓ — mapping unclear (Wells/Africa P1? Beach P3?)
+  5. **Tent with trees** ⛺ — directly maps to **Wilderness/Tents puzzle (P6)**
+- **Theory**: These 5 emojis may represent 5 of the 9 puzzles, or hint at answer words/themes
 
-4. **QR CODE (frames 57-64):** Should be scanned. It is formed from the aerial arrangement of military vehicles and buildings and may link to a unique URL with additional puzzle content.
+### 3. CONTROL ROOM MONITORS — CATALOGUED
+- **Frames**: 14-26 (best views: 18, 20, 24)
+- **9 distinct symbols on monitors** — likely one per puzzle video:
 
-5. **BEAM NUMBER "3634026-1" (frames 33-38):** This industrial code could be significant -- possibly a coordinate, reference number, or cipher key.
+| # | Symbol | Best frame | Monitor location | Possible puzzle match |
+|---|--------|-----------|------------------|----------------------|
+| 1 | Spider | 17-18 | Upper-left bank | ? |
+| 2 | Bird (white songbird) | 14-18 | Center-left | ? |
+| 3 | Sine wave (blue) | 14-18 | Left bank, below bird | ? |
+| 4 | Ear / hearing icon | 14-24 | Upper-right (prominent) | ? |
+| 5 | Elephant (gray) | 19-24 | Far-right | Wells/Africa (P1)? |
+| 6 | 10^5 (100,000) | 20-26 | Upper-right monitor | ? |
+| 7 | Faces grid (headshots) | 15-24 | Right bank | Adopted Dogs (P7)? or 600 Strangers (P2)? |
+| 8 | Smoking device/object | 19-24 | Far-right lower | Wilderness (P6)? |
+| 9 | Swiss/medical cross | 24 | Small monitor, far right | ? |
 
-6. **SLACK EMOJI REACTIONS (frames 27-29):** The specific emojis (dinosaur, coin, anchor, tent/mountain, etc.) may correspond to puzzle answers or clue categories.
+- **Additional non-puzzle monitors**: MrBeast headshot with "I D" colored bars, Salesforce cloud logos, sticky notes/bulletin board
+- **Symbol-to-puzzle mapping NOT confirmed** — needs further analysis
 
-7. **ELECTRICAL PANEL LIGHTS (frames 36-44):** The colored light grid pattern (amber/green/red) may encode binary data or serve as a key.
+---
 
-8. **RED-BORDERED BILLS (frame 1):** Count and arrangement of highlighted bills could be numerical data.
+## PARTIALLY DECODED / IN PROGRESS
 
-9. **CONTROL ROOM MONITORS:** Each symbol likely corresponds to one of the 9 YouTube playlist videos. The spider, bird, sine wave, ear, elephant, 10^5, faces, smoking device, and cross should be matched to specific videos for extraction.
+### 4. VAULT RIM NUMBERS — PARTIALLY READ
+- **Frames**: 51-53 (best), also vault_hires/ at 24fps (frames 38-45 best)
+- **Enhanced crops saved**: `vault_hires/rim_top_2x.jpg`, `enhanced_top_vault_0040.jpg`
+- **Video source**: 1080p at 24fps — this is the max resolution available from YouTube
+- **What we can read** (partial, reading clockwise from upper-left):
+  - Upper-left arc: `...1-1-8-4-3-1-1-5-1-5-1-4...`
+  - Top-center: `...0-1-1-1-0-4+...`
+  - Upper-right continuing: `...1-1-9-0-4-1-0-4-2...`
+  - Left arc: `...1-1-8-4-3-1-1-...`
+- **Separator pattern**: Single digits separated by `-` (dash), with occasional `+` signs
+- **Theory**: The `+` signs may separate 9 segments (one per puzzle). Each segment contains extraction coordinates or indices.
+- **STATUS: NEEDS HIGHER RESOLUTION** — the 1080p video is insufficient to read all digits confidently. MrBeast's GMA hint ("look for numbers in photos I took at the Super Bowl") suggests **still photos** may show the vault door more clearly.
+
+### 5. BRAILLE DOTS ON BLAST DOOR — NOT DECODED
+- **Frames**: 30-36 (best: 30-31), also braille_hires/ at 24fps
+- **Two groups** of raised rivets/dots on upper portion of blast door
+- Left group: ~4-5 Braille characters wide
+- Right group: ~4-5 Braille characters wide
+- **STATUS**: Dot positions not mapped. Need higher resolution or photo closeup.
+
+### 6. MATHEMATICAL FORMULA
+- **n^3 = m^2** (or possibly n^3 = n^2) — large screen, bottom-right of control room
+- **Frames**: 24-26
+- **If n^3 = m^2**: Notable solutions include n=4/m=8, n=9/m=27 (perfect powers)
+- **If n^3 = n^2**: Simplifies to n=1 (trivial) or n=0
+- **Significance**: Unknown — may relate to a specific puzzle's extraction
+
+---
+
+## STILL UNRESOLVED
+
+### 7. BEAM NUMBER "3634026-1" (frames 33-38)
+- Stamped on metal crossbar/barrier beam with gear symbol
+- Possibly reads "3634B26-1" — industrial part number format
+- Could be a coordinate, reference number, or red herring
+
+### 8. ELECTRICAL PANEL LIGHTS (frames 36-44)
+- 2x4 grid of colored lights: amber, green, red
+- Pattern may encode binary data or serve as a key
+- Needs closer analysis of light on/off states across frames
+
+### 9. RED-BORDERED DOLLAR BILLS (frames 1-2)
+- ~10-12 bills highlighted with red/pink borders in vault opening scene
+- Count or arrangement may be meaningful
+- Could relate to "CASH TENT" community-decoded clue
+
+### 10. LASER BEAM PATTERN (frames 9-13)
+- 8-10 red beams creating complex web in corridor
+- Could form letters/numbers when intersections are mapped
+- Low priority — likely atmospheric
+
+---
+
+## KEY NEXT STEPS
+
+1. **FIND MRBEAST'S SUPER BOWL PHOTOS** — GMA hint says "look for numbers in photos I took at the Super Bowl." Photos likely on Instagram (@mrbeast) and X (@MrBeast) from Feb 8-9. Known post: photo with Rosé captioned "I like football." These photos may show vault rim numbers clearly, or contain other hidden numbers. **No one in the community has publicly decoded these yet.**
+
+2. **ACCESS mrbeast.salesforce.com/bts** — The QR code destination. Returns 403 via curl/fetch. Try with browser login.
+
+3. **MAP SYMBOLS TO PUZZLES** — Match the 9 control room monitor symbols to the 9 puzzle videos. This mapping is needed to know which extraction key applies to which puzzle.
+
+4. **DECODE BRAILLE** — Map the dot patterns on the blast door. May need community photos or higher-res screenshots.
+
+5. **READ FULL VAULT RIM** — Either from MrBeast's photos (see #1) or from a 4K source of the ad if one exists.
+
+---
+
+## HIGH-RES FRAME EXTRACTION LOG
+
+Additional frames extracted at 24fps from 1080p source video:
+- `vault_hires/` — 97 frames (24-28s, vault door exterior)
+- `qr_hires/` — 121 frames (27-32s, QR code aerial)
+- `braille_hires/` — 96 frames (14-18s, blast door)
+- Enhanced crops: `vault_hires/rim_top_2x.jpg`, `rim_right_2x.jpg`, `rim_left_2x.jpg`, etc.

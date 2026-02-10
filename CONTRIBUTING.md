@@ -1,38 +1,37 @@
-# Contributing to the MrBeast Million Dollar Puzzle Hunt
+# Contributing
 
-Thanks for joining the hunt! This is a collaborative effort — every clue, theory, and solved puzzle gets us closer to $1M.
+This repo is an experiment in running a collaborative project entirely through GitHub's toolchain. The MrBeast puzzle gives it a real purpose — but contributions on either front (GitHub workflow improvements or puzzle progress) are equally welcome.
 
-## How the Puzzle Works
+The puzzle community is fragmented across Reddit, Discord, YouTube comments, Twitter/X, and more. This repo exists to centralize findings in one structured, searchable, version-controlled place — instead of scattered across platform silos where things get lost.
 
-1. **9 YouTube videos** each have a pinned comment linking to a sub-puzzle
+## The Puzzle (Quick Context)
+
+1. **9 YouTube videos** each have a pinned comment linking to a sub-puzzle on a different platform
 2. Each solved puzzle yields **one word**
 3. The 9 words form a **meta-clue** (word lengths: 5, 9, 5, 7, 8, 4, 9, 6, 5)
-4. The meta-clue is an INSTRUCTION that leads to a hidden code
-5. Slack the code to Jimmy Donaldson to win
+4. The meta-clue is an instruction that leads to a hidden code
+5. Slack the code to MrBeast to win
 
-The Super Bowl ad contains extraction keys needed to pull answer words from solved puzzles. You can't solve the puzzles in isolation — they're interconnected.
+The Super Bowl ad contains extraction keys needed to pull answer words from solved puzzles — they're all interconnected.
 
 ## Ways to Contribute
 
-### Found a clue?
-1. [Open a "Clue Found" issue](../../issues/new?template=clue_found.yml)
-2. Include screenshots, timestamps, or frame numbers
-3. Rate your confidence level
+### Puzzle-related
+- **Found a clue?** [Open a "Clue Found" issue](../../issues/new?template=clue_found.yml)
+- **Solved a puzzle?** [Open a "Puzzle Solution" issue](../../issues/new?template=puzzle_solution.yml)
+- **Have a theory?** [Open a "Theory" issue](../../issues/new?template=theory.yml)
 
-### Solved a puzzle?
-1. [Open a "Puzzle Solution" issue](../../issues/new?template=puzzle_solution.yml)
-2. Show your work — especially the extraction method
-3. Explain how others can verify it
+### Repo/workflow-related
+- Improve the GitHub Pages dashboard
+- Add or improve GitHub Actions workflows
+- Better issue/PR templates
+- Documentation improvements
+- Suggest GitHub features we should be using but aren't
 
-### Have a theory?
-1. [Open a "Theory" issue](../../issues/new?template=theory.yml)
-2. Include supporting evidence
-3. Describe how we could test it
-
-### Want to add code or files?
+### Adding files via PR
 1. Fork this repo
-2. Create a branch: `git checkout -b clue/your-finding`
-3. Add your work to the correct directory (see below)
+2. Create a branch: `clue/your-finding`, `solve/puzzle-N`, `theory/description`, or `fix/description`
+3. Add your work to the correct directory (see table below)
 4. Submit a PR
 
 ## Where to Put Things
@@ -40,30 +39,22 @@ The Super Bowl ad contains extraction keys needed to pull answer words from solv
 | What you have | Where it goes |
 |---------------|---------------|
 | Puzzle solution or analysis | `puzzles/XX_name/notes.md` |
-| Frame screenshots or extracted images | `clues/super_bowl_ad/` or `clues/teaser_videos/` |
+| Frame screenshots or images | `clues/super_bowl_ad/` or `clues/teaser_videos/` |
 | Community intel or web findings | `sources/<topic>/` |
 | Scripts or tools | `scripts/` |
-| General documentation | `docs/` |
+| Documentation | `docs/` |
 
 ## Ground Rules
 
-- **Document everything** — screenshots, links, reasoning, timestamps
-- **Label theories vs confirmed findings** — don't present guesses as facts
-- **Don't delete others' work** — even if you disagree, add your counter-analysis alongside
-- **Don't post the final answer publicly** if you find it — the prize goes to the first person who Slacks it
-- **Speed matters but accuracy matters more** — a wrong lead wastes everyone's time
-- **Be kind** — we're all in this together
+- **Document everything** — screenshots, links, reasoning
+- **Label theories vs confirmed findings**
+- **Don't delete others' work** — add counter-analysis alongside if you disagree
+- **Don't post the final answer publicly** if you find it
+- **Note if you used AI** in your PR/issue so others can evaluate the methodology
 
-## Branch Naming
+## Puzzle Platforms
 
-- `clue/short-description` — new clue or evidence
-- `solve/puzzle-N` — puzzle solution attempt
-- `theory/short-description` — a theory with supporting evidence
-- `fix/short-description` — repo fixes, typos, structure improvements
-
-## The Puzzle Platforms
-
-Each puzzle lives on a different platform under the account **BeastForce67**:
+Each sub-puzzle is posted by **BeastForce67** on a different platform:
 
 | # | Platform | Link |
 |---|----------|------|
@@ -77,16 +68,6 @@ Each puzzle lives on a different platform under the account **BeastForce67**:
 | 8 | imgpile | https://imgpile.com/u/beastforce67 |
 | 9 | 500px | https://500px.com/p/beastforce67 |
 
-## Using AI Tools
-
-This repo is designed to work with Claude Code and other AI assistants. The `CLAUDE.md` file contains instructions for AI agents. The `docs/how_to_attempt.md` file is a complete battle plan that can be fed directly to an AI.
-
-If you use AI to find clues, please note that in your PR/issue so others can evaluate the methodology.
-
-## Questions?
-
-Open a Discussion (if enabled) or an issue tagged with `question`.
-
 ---
 
-*Let's go get that million dollars.*
+*Questions? Open an issue tagged `question`.*

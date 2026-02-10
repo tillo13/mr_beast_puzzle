@@ -1,6 +1,5 @@
 # Auto-detect text files and normalize line endings
 * text=auto
-
 # Force LF for scripts and config
 *.sh text eol=lf
 *.py text eol=lf
@@ -11,7 +10,6 @@
 *.html text eol=lf
 *.css text eol=lf
 *.js text eol=lf
-
 # Mark binary files
 *.png binary
 *.jpg binary

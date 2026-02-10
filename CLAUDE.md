@@ -105,27 +105,34 @@ mrbeast_puzzle/
 │   │   └── teaser_videos/
 │   └── community/               # Cross-platform community progress
 │
-├── results/                     # Stage-gate outputs: summary_YYYYMMDD_HHMM_description.json
+├── results/                     # Cross-cutting state & reference
+│   ├── state.json               # ONE rolling file: current state of all puzzles + meta-clue
+│   ├── puzzle_links.md          # All 9 puzzle links with pinned comment text
+│   ├── community_progress.md    # Community intel compilation
+│   └── archive/                 # Old session summaries (historical)
 │
 ├── scripts/                     # Shared automation tools
 │   └── check_sources.py         # Source monitor (run daily)
 │
 └── docs/                        # Documentation, tracking & GitHub Pages
     ├── index.html               # Puzzle tracker dashboard
-    ├── how_to_attempt.md        # Full battle plan & agent workflow
+    ├── how_to_attempt.md        # Agent workflow phases & AI techniques
     ├── nine_word_clue.md        # Meta-clue assembly tracker
     ├── progress.md              # Daily progress log
-    ├── potential_tools.md       # Reusable tools catalog
-    └── testing_suite_methodology.md  # Stage-gate QA methodology
+    ├── potential_tools.md       # Puzzle-relevant tools (vision, audio, stego)
+    ├── testing_suite_methodology.md  # Puzzle-specific stage gates
+    ├── parallel_agent_strategy.md   # 1-agent-per-puzzle execution plan
+    └── sources_strategy.md          # How to check sources without re-scraping
 ```
 
 ## Key Files
 
-- `docs/how_to_attempt.md` — Full battle plan with all known URLs, clue analysis, phased agent workflow, and AI-specific techniques. **Read this first when starting work.**
-- `docs/nine_word_clue.md` — Tracks the 9-word meta-clue assembly and candidate phrases
-- `docs/progress.md` — Daily progress log; update this when new findings are made
-- `docs/potential_tools.md` — Catalog of reusable tools (vision, audio, video, deployment)
-- `docs/testing_suite_methodology.md` — Stage-gate methodology for validating puzzle solutions
+- `results/state.json` — **Single source of truth** for current state of all puzzles, meta-clue, and pending work. Read this first. Update your puzzle's entry when you make progress.
+- `docs/how_to_attempt.md` — Agent workflow phases & AI techniques to deploy
+- `docs/nine_word_clue.md` — Meta-clue assembly tracker (5,9,5,7,8,4,9,6,5)
+- `docs/progress.md` — Daily progress log; update at end of each session
+- `docs/parallel_agent_strategy.md` — 1-agent-per-puzzle execution plan with prompt templates
+- `docs/sources_strategy.md` — How to check sources incrementally (session startup checklist)
 - `results/puzzle_links.md` — All 9 puzzle links with full pinned comment text
 
 ## Repo Conventions
@@ -184,27 +191,26 @@ sources/salesforce_hub/
 
 These rules prevent lost work across sessions and multi-agent tasks.
 
-### 1. Save Before Moving On
-After any multi-agent task or significant work block, save results to `results/summary_YYYYMMDD_HHMM_description.json` before doing anything else. Timestamped files keep history — never overwrite. Even when context dies, the work product is on disk.
+### 1. Single Source of Truth
+`results/state.json` is the rolling state file. Update your puzzle's entry when you make progress. Do NOT create new timestamped summary files — update `state.json` instead.
 
-### 2. File-Based Handoffs
-Work in focused sessions: solve puzzles in session 1 → save to files → restructure in session 2. Never rely on one massive context window. All findings must be written to disk in the appropriate `puzzles/`, `clues/`, or `results/` directory.
+### 2. Per-Puzzle Isolation
+Each puzzle agent writes ONLY to its own `puzzles/XX_*/` folder. Puzzle-specific findings go in `puzzles/XX_*/notes.md`. Cross-cutting state goes in `results/state.json`.
 
-### 3. Verify Before Proceeding
-A gate after puzzle-solving: verify all solutions are written to disk before proceeding to any other task. Check that files exist and contain expected content.
+### 3. File-Based Handoffs
+Work in focused sessions. Never rely on one massive context window. All findings must be written to disk in the appropriate `puzzles/`, `clues/`, or `results/` directory.
 
-### 4. Session Summary
-At the end of each work session, write `results/summary_YYYYMMDD_HHMM_description.json` with:
-- What was accomplished
-- What files were created/modified
-- What's pending for the next session
-- Any open questions or blockers
+### 4. Verify Before Proceeding
+After puzzle-solving: verify solutions are written to disk before proceeding. Check that `notes.md` exists and contains expected content. Check that `state.json` reflects the new status.
 
 ### 5. Multi-Agent Discipline
-When launching parallel agents, each agent must write its findings to a specific file. The orchestrator must verify all output files exist before synthesizing results.
+When launching parallel agents, each agent writes to its own folder. The orchestrator reads `results/state.json` and all `puzzles/*/notes.md` to synthesize. See `docs/parallel_agent_strategy.md`.
 
 ### 6. Web Search → Sources
 All web search results go into `sources/<topic>/`, not `results/`. Follow the daily-update pattern above. Append to `updates.log` every time you check a source.
+
+### 7. Session Wrap-Up
+At end of each session, update `results/state.json` (pending, last_session) and `docs/progress.md`.
 
 ## Known Red Herrings
 
