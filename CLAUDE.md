@@ -43,7 +43,7 @@ All posted by **BeastForce67** accounts across platforms.
 | 8 | I Spent 100 Hours Inside The Pyramids! (NDsO1LT_0lw) | imgpile | https://imgpile.com/u/beastforce67 |
 | 9 | Anything You Can Fit In The Circle I'll Pay For (yXWw0_UfSFg) | 500px | https://500px.com/p/beastforce67 |
 
-Full details with pinned comment text: `results/puzzle_links.md`
+Full details with pinned comment text: `clues/puzzle_links.md`
 
 ## Puzzle Status
 
@@ -105,11 +105,8 @@ mrbeast_puzzle/
 │   │   └── teaser_videos/
 │   └── community/               # Cross-platform community progress
 │
-├── results/                     # Cross-cutting state & reference
-│   ├── state.json               # ONE rolling file: current state of all puzzles + meta-clue
-│   ├── puzzle_links.md          # All 9 puzzle links with pinned comment text
-│   ├── community_progress.md    # Community intel compilation
-│   └── archive/                 # Old session summaries (historical)
+├── results/                     # Central state only
+│   └── state.json               # ONE rolling file: current state of all puzzles + meta-clue
 │
 ├── scripts/                     # Shared automation tools
 │   └── check_sources.py         # Source monitor (run daily)
@@ -129,11 +126,10 @@ mrbeast_puzzle/
 
 - `results/state.json` — **Single source of truth** for current state of all puzzles, meta-clue, and pending work. Read this first. Update your puzzle's entry when you make progress.
 - `docs/how_to_attempt.md` — Agent workflow phases & AI techniques to deploy
-- `docs/nine_word_clue.md` — Meta-clue assembly tracker (5,9,5,7,8,4,9,6,5)
 - `docs/progress.md` — Daily progress log; update at end of each session
-- `docs/parallel_agent_strategy.md` — 1-agent-per-puzzle execution plan with prompt templates
+- `docs/parallel_agent_strategy.md` — Multi-agent-per-puzzle execution plan with prompt templates
 - `docs/sources_strategy.md` — How to check sources incrementally (session startup checklist)
-- `results/puzzle_links.md` — All 9 puzzle links with full pinned comment text
+- `clues/puzzle_links.md` — All 9 puzzle links with full pinned comment text
 
 ## Repo Conventions
 

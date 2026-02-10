@@ -109,4 +109,4 @@ sources/<topic>/
 - Video frames already extracted to `clues/*/frames/`
 - Subtitle files (`.vtt`) — these don't change
 - `info.json` metadata — static after download
-- The 9 puzzle URLs themselves (in `results/puzzle_links.md`) — these are fixed
+- The 9 puzzle URLs themselves (in `clues/puzzle_links.md`) — these are fixed

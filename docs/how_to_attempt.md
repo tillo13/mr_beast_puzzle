@@ -8,7 +8,7 @@
 ### PHASE 1: GATHER ALL MATERIALS
 - Download Super Bowl ad at max resolution → frame extraction
 - Download all teaser/promo videos
-- Find and record all 9 pinned comment puzzle links (DONE → `results/puzzle_links.md`)
+- Find and record all 9 pinned comment puzzle links (DONE → `clues/puzzle_links.md`)
 - Find MrBeast's Super Bowl photos (GMA hint: "look for numbers in photos")
 - Check Tonight Show Feb 6 appearance for puzzle content
 - Monitor mrbeast.salesforce.com for new hints

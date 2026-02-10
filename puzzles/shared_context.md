@@ -93,6 +93,25 @@ Below the "Good luck!" Slackbot message (frames 27-29), 5 emoji reactions:
 - **Vault rim numbers partially read** but 1080p video too low-res for full decode
 - **Braille NOT decoded** — need higher resolution
 
+## Community Ad Decodes (NEW — from Manifold Markets, Feb 9)
+
+The community has decoded additional elements from the Super Bowl ad that we hadn't found:
+
+| Decode | Source in Ad | Notes |
+|--------|-------------|-------|
+| **CASH TENT** | Marked dollar bills | May relate to P6 (Wilderness/Tents) |
+| **LASER MIX UP** | 26 laser dots in sequence | From the laser door/corridor scene |
+| **TRUST AI** | Morse code flashing | Uncertain — needs verification |
+| **DINAMODI** | Birds-on-wire cipher | Anagram theories: "I AM DINO", "DOMAIN ID", "DIAM NODI" |
+
+Also noted by community:
+- Southwest direction words: Swing, Witch, Elephant, Swan's Neck, Sword, Switzerland, Sweater
+- Caesar cipher reference from bust sculpture with L/R position notation
+- Compass-direction imagery
+- Numbered wheel sequence
+
+**Despite all these decodes, the community reports "basically no progress" toward actual puzzle answers.**
+
 ## What We Still Don't Know
 - Full vault rim number sequence (need MrBeast's Super Bowl photos or 4K video)
 - Which monitor symbol maps to which puzzle (9 symbols → 9 puzzles)

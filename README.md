@@ -1,14 +1,10 @@
-# MrBeast Million Dollar Puzzle — A GitHub-Native Project Experiment
-
-> **Can you run an entire collaborative, time-pressured project using nothing but GitHub?** Issues, PRs, Pages, Actions, Discussions, templates, AI agents — the works. This repo is the experiment.
-
 ## What This Is
 
-I wanted to stress-test GitHub's full toolchain on a real, non-trivial project — not a toy demo, but something with actual stakes, deadlines, and collaboration potential. The [MrBeast x Salesforce Million Dollar Puzzle](https://mrbeast.salesforce.com/) (Super Bowl LX, Feb 2026) turned out to be the perfect use case:
+I wanted to stress-test GitHub's full toolchain and collaboration potential, and give Claude Code agents some fun things to to to try to max the Claude Max plan. The [MrBeast x Salesforce Million Dollar Puzzle](https://mrbeast.salesforce.com/) (Super Bowl LX, Feb 2026) turned out to be a pretty good use case:
 
 - **Time-bounded** — hard deadline of April 2, 2026
 - **Multi-faceted** — 9 sub-puzzles across different platforms, each requiring different techniques
-- **Naturally collaborative** — designed so no single person can solve everything alone
+- **Naturally collaborative** — designed so no single person (or Agent stack?) can solve everything alone
 - **AI-friendly** — perfect for testing Claude Code and other AI-assisted workflows
 - **Real stakes** — there's a $1M prize, which keeps things interesting
 
@@ -43,7 +39,7 @@ This repo uses (or plans to use) the following GitHub features as the **sole pro
 | **CLAUDE.md** | AI agent instructions — Claude Code reads this file for context |
 | **Branch strategy** | `clue/`, `solve/`, `theory/` prefixed branches for organized contributions |
 
-The goal is to see how far GitHub alone can take a fast-moving, multi-person research + problem-solving effort.
+The goal is to see how far GitHub alone can take a fast-moving, multi-person research + problem-solving effort, while pushing Claude Agents locally. Currently debating putting multiple agents on one puzzle versus multiple agents across ALL puzzles, leaning towards the prior.
 
 ## Repo Structure
 
@@ -55,30 +51,27 @@ mrbeast_puzzle/
 │   ├── ...
 │   └── 09_circle/
 │
-├── clues/                       # Raw materials (ad frames, video stills, social media)
-│   ├── super_bowl_ad/frames/
-│   ├── teaser_videos/
+├── clues/                       # Raw materials + cross-cutting references
+│   ├── super_bowl_ad/           # Ad frames, vault crops, braille crops
+│   ├── teaser_videos/           # Rewatch + bank heist frames
+│   ├── puzzle_links.md          # All 9 puzzle URLs + pinned comments
 │   └── daily_hints/
 │
 ├── sources/                     # External intel (Reddit, ARGNet, community findings)
 ├── scripts/                     # Automation (source monitors, etc.)
-├── results/                     # Cross-cutting state: state.json, puzzle links
+├── results/                     # Just state.json — single source of truth
 └── docs/                        # GitHub Pages dashboard + strategy docs
 ```
 
-## Getting Started — Table Stakes
+## Getting Started
 
-**This repo does NOT include puzzle images.** MrBeast and Lone Shark Games deliberately scattered puzzles across 9 different platforms — some behind Cloudflare walls, some on obscure image hosts, some requiring you to physically go find them. That's part of the game.
-
-To participate, you need to **go find the puzzle images yourself**:
+We'd encourage you to start from the source — half the fun is the scavenger hunt itself:
 
 1. Start at the [9-video playlist](https://www.youtube.com/playlist?list=PLj-VLkYRjRxm5HVGFVpPP5W7jkvvzd1q7)
 2. Find the **pinned comment** on each video (posted by BeastForce67 accounts)
 3. Follow each link to the puzzle on its platform (Pinterest, Reddit, Imgur, Medium, etc.)
-4. Download the puzzle images to your local `puzzles/XX_*/` folders
-5. Similarly, grab the Super Bowl ad frames yourself: `yt-dlp` the ad video and extract with `ffmpeg`
 
-The URLs for all 9 puzzles are documented in [`results/puzzle_links.md`](results/puzzle_links.md). What you'll find here is the **analysis, solver code, and strategy** — not the raw materials. Respect the game.
+That said, all the analysis, solver code, and strategy is right here in the repo — dig around as much as you want. The puzzle URLs are documented in [`clues/puzzle_links.md`](clues/puzzle_links.md).
 
 ## Current Puzzle Status
 
@@ -121,7 +114,7 @@ See **[CONTRIBUTING.md](CONTRIBUTING.md)** for structure and conventions.
 | Official Hub | https://mrbeast.salesforce.com/ |
 | 9-Video Playlist | https://www.youtube.com/playlist?list=PLj-VLkYRjRxm5HVGFVpPP5W7jkvvzd1q7 |
 | ARGNet Analysis | https://www.argn.com/2026/02/start_slacking_off_with_mrbeasts_million_dollar_puzzle_hunt/ |
-| Puzzle Links | [results/puzzle_links.md](results/puzzle_links.md) |
+| Puzzle Links | [clues/puzzle_links.md](clues/puzzle_links.md) |
 
 ## Timeline
 

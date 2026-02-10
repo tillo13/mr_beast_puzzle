@@ -1,66 +1,134 @@
-# Parallel Agent Strategy: 1 Agent Per Puzzle
+# Parallel Agent Strategy
 
-## Concept
+## Lessons Learned (the hard way)
 
-Launch 9 Claude Code agents (CLI or VS Code windows), each laser-focused on one sub-puzzle. Each agent writes only to its own `puzzles/XX_*/` folder. A 10th "orchestrator" agent (or human) reads all 9 outputs and assembles the meta-clue.
+1. **Agents die.** Every agent from session 2 ran out of context without saving notes. All work was lost.
+2. **Save incrementally, not at the end.** If an agent writes findings to disk after every discovery, a context blowout becomes a checkpoint instead of a total loss.
+3. **Multiple agents on one puzzle > one agent per puzzle.** Focused collaboration beats shallow coverage. One deep solve is worth more than 9 shallow attempts.
+4. **Each agent needs its own file.** Concurrent agents writing to the same file clobber each other.
 
-## Prerequisites (before launching)
+## Strategy: Multi-Agent Per Puzzle
 
-These should be done first — the per-puzzle agents need this shared context:
+Instead of spreading 9 agents across 9 puzzles, concentrate multiple agents on ONE puzzle at a time. Each agent attacks a different angle. When that puzzle is cracked, move on.
 
-1. **Super Bowl ad frame analysis** — MUST complete first. The ad likely contains extraction keys needed to pull answer words from solved grids. Without these, agents can solve puzzle grids but can't extract the final word.
-2. **Rewatch video analysis** — may contain additional extraction clues.
-3. **Hint #2 (and any subsequent hints)** — could unlock entire puzzle categories.
-4. **Shared context file** — write a `puzzles/shared_context.md` with all known extraction keys, ad symbols, and hints so each agent can reference it.
+### File Structure
 
-## Agent Assignments
+```
+puzzles/XX_name/
+├── puzzle.png              # shared input (read-only for agents)
+├── scratch_clues.md        # Agent A: crossword/clue solving
+├── scratch_grid.md         # Agent B: grid transcription & structure
+├── scratch_community.md    # Agent C: web research & community intel
+├── scratch_quote.md        # Agent D: quote/phrase guessing
+├── scratch_extraction.md   # Agent E: extraction method testing
+└── notes.md                # FINAL merged result (orchestrator writes)
+```
 
-| Agent | Puzzle | Folder | URL | Platform |
-|-------|--------|--------|-----|----------|
-| 1 | Wells/Africa | `puzzles/01_wells_africa/` | https://pin.it/3DIjEcxdY | Pinterest |
-| 2 | LIFECHANGE Sudoku | `puzzles/02_lifechange/` | reddit.com/user/BeastForce67/.../puzzle/ | Reddit |
-| 3 | Dirtiest Beach | `puzzles/03_dirtiest_beach/` | https://imgur.com/gallery/puzzle-mD2eHYD | Imgur |
-| 4 | Experiences | `puzzles/04_experiences/` | https://imageshack.com/user/BeastForce67 | ImageShack |
-| 5 | Pokemon Go | `puzzles/05_pokemon_go/` | photobucket.com/share/753ba093-... | Photobucket |
-| 6 | Wilderness | `puzzles/06_wilderness/` | medium.com/@beastforce67/puzzle-... | Medium |
-| 7 | Adopted Dogs | `puzzles/07_adopted_dogs/` | https://pixelfed.social/BeastForce67 | Pixelfed |
-| 8 | Pyramids | `puzzles/08_pyramids/` | https://imgpile.com/u/beastforce67 | imgpile |
-| 9 | Circle | `puzzles/09_circle/` | https://500px.com/p/beastforce67 | 500px |
+Agent file names should reflect the agent's **role**, not a number. Pick from the role list or invent one that fits.
 
-## Per-Agent Prompt Template
-
-Each agent gets a focused prompt like:
+### Per-Agent Prompt Template
 
 ```
 You are solving puzzle #{N} of the MrBeast Million Dollar Puzzle.
+Your role: {ROLE} (e.g., "crossword clue solver", "grid transcriber", "community researcher")
 
 YOUR PUZZLE:
 - Video: {video_title} ({video_id})
-- Puzzle URL: {url}
 - Platform: {platform}
-- Meta-clue position: word #{N} of 9 (word length pattern: 5,9,5,7,8,4,9,6,5)
-- Your answer word should be {X} letters long
+- Meta-clue position: word #{N} of 9 (expected length: {X} letters)
+- Puzzle image: puzzles/{folder}/puzzle.png
 
 YOUR TASK:
-1. Fetch the puzzle URL and download/analyze all images
-2. Identify the puzzle type (sudoku, crossword, cipher, steganography, etc.)
-3. Solve the puzzle grid/mechanism
-4. Read puzzles/shared_context.md for extraction keys from the Super Bowl ad
-5. Apply the extraction method to get your answer word
-6. Write ALL findings to puzzles/{folder}/notes.md
+1. Read puzzles/shared_context.md for extraction keys from the Super Bowl ad
+2. Read puzzles/{folder}/puzzle.png (the puzzle image)
+3. Focus on your role: {ROLE_SPECIFIC_INSTRUCTIONS}
+4. Write your answer word candidate if you find one
+
+CRITICAL — INCREMENTAL SAVING:
+- Write findings to puzzles/{folder}/scratch_{role}.md AFTER EVERY DISCOVERY
+- Do NOT wait until the end. Append new sections as you go.
+- If you run out of context, another agent will pick up from this file.
+- Use clear headers: ## Clue 1, ## Grid Row 3, ## Theory: XYZ, etc.
+- Mark confidence levels: CONFIRMED, LIKELY, GUESS, UNVERIFIED
 
 RULES:
 - ONLY write to puzzles/{folder}/ — do not touch other puzzle folders
-- Save images you download to puzzles/{folder}/
-- Write notes.md with: puzzle type, solve process, grid solution, extraction attempt, answer word (or best candidates)
-- If you can't extract the final word, document what you solved and what's missing
-- Update your puzzle's entry in results/state.json when done (status, puzzle_type, grid_solved, answer_word)
+- ONLY write to your scratch file: scratch_{role}.md
+- Do NOT write to notes.md (the orchestrator does that)
 - Read CLAUDE.md for repo conventions
 ```
 
-## Word Length Constraints
+### Role Templates
 
-Use these to validate answer words:
+Pick 3-5 of these per puzzle depending on puzzle type:
+
+| Role | File | What it does |
+|------|------|-------------|
+| **clues** | `scratch_clues.md` | Solve crossword clues, word puzzles, trivia questions |
+| **grid** | `scratch_grid.md` | Transcribe the visual grid, identify structure, map positions |
+| **community** | `scratch_community.md` | Web search for community solutions, Reddit/Discord intel |
+| **quote** | `scratch_quote.md` | Guess the quote/phrase from partial letters, thematic hints |
+| **extraction** | `scratch_extraction.md` | Test extraction methods using Super Bowl ad keys |
+| **visual** | `scratch_visual.md` | Analyze images for hidden details, steganography, colors |
+| **logic** | `scratch_logic.md` | Constraint solving (sudoku, tents, cages, etc.) |
+| **research** | `scratch_research.md` | Look up references, identify TV shows/songs/places |
+
+### Agent Count Per Puzzle Type
+
+| Puzzle Type | Recommended Agents | Roles |
+|-------------|-------------------|-------|
+| Crossword / drop-quote | 4 | clues, grid, quote, community |
+| Sudoku / logic grid | 3 | grid, logic, extraction |
+| Visual identification | 3 | visual, research, community |
+| Word puzzle / cipher | 3 | grid, clues, extraction |
+
+## Orchestrator Role
+
+The orchestrator (human or main agent window) does NOT solve — it coordinates:
+
+1. **Before launch:** Write `puzzles/shared_context.md` with all known extraction keys
+2. **Launch agents** with role-specific prompts (stagger by ~30s if rate-limited)
+3. **Monitor scratch files** — check `puzzles/XX_*/scratch_*.md` periodically
+4. **When agents finish (or die):** Read all scratch files, merge into `notes.md`
+5. **Cross-reference** findings between puzzles for extraction clues
+6. **Update** `results/state.json` with puzzle status
+7. **Decide next puzzle** to attack with the multi-agent approach
+
+### Merging Scratch Files into notes.md
+
+```
+# Puzzle #N — {Name}
+
+## Source
+(from shared_context.md)
+
+## Puzzle Type
+(from scratch_grid.md)
+
+## Grid / Structure
+(from scratch_grid.md)
+
+## Clue Solutions
+(from scratch_clues.md)
+
+## Community Intel
+(from scratch_community.md)
+
+## Extraction
+(from scratch_extraction.md)
+
+## Answer Word
+(merged conclusion)
+
+## Status
+- [ ] Grid transcribed
+- [ ] Clues solved
+- [ ] Grid solved
+- [ ] Extraction method found
+- [ ] Answer word extracted
+```
+
+## Word Length Constraints
 
 | Position | Word Length | Assigned Puzzle |
 |----------|-----------|-----------------|
@@ -74,49 +142,16 @@ Use these to validate answer words:
 | 8 | 6 letters | #8 Pyramids |
 | 9 | 5 letters | #9 Circle |
 
-**Note:** We don't actually know which video maps to which meta-clue position. The mapping above assumes playlist order = meta-clue order, but this is unconfirmed. Agents should just focus on extracting their answer word — the ordering gets figured out during assembly.
+**Note:** Playlist order = meta-clue order is assumed but unconfirmed.
 
-## Practical Constraints
+## Execution Checklist
 
-### Rate Limits
-- 9 simultaneous agents all making API calls will likely hit rate limits
-- **Mitigation:** Stagger launches by ~30 seconds, or run in two batches (5 then 4)
-- Image-heavy puzzles (Pinterest, Imgur, Photobucket, imgpile) will use more tokens than text-based ones (Medium, Reddit)
-
-### File Conflicts
-- Each agent writes ONLY to its own folder — no conflicts
-- `puzzles/shared_context.md` is READ-ONLY for puzzle agents (written by orchestrator before launch)
-
-### When an Agent Gets Stuck
-- It should document what it figured out and what's blocking it in `notes.md`
-- The orchestrator can then cross-reference with other agents' findings
-- Some puzzles may be unsolvable without info from other puzzles (the "interconnected" design)
-
-## Orchestrator Role (10th agent or human)
-
-After all 9 agents finish:
-
-1. Read `results/state.json` — check which puzzles have answer words vs. are stuck
-2. Read all 9 `puzzles/*/notes.md` files for detailed findings
-3. Cross-reference stuck agents with findings from other puzzles
-4. Update `results/state.json` meta_clue.words array with extracted words
-5. Attempt meta-clue assembly: `_____ _________ _____ _______ ________ ____ _________ ______ _____`
-6. Validate: does the assembled phrase read as an INSTRUCTION?
-7. Follow the instruction to find the hidden code
-
-## Estimated Resource Usage
-
-- ~9 agent sessions running ~10-30 min each
-- Token-heavy for image analysis puzzles
-- Best run during off-peak hours if rate limits are a concern
-- Total cost depends on puzzle complexity — budget for ~$5-15 across all 9
-
-## When to Execute
-
-- [ ] Super Bowl ad frame analysis complete → extraction keys documented
-- [ ] Rewatch video analysis complete → additional clues documented
-- [ ] All hints checked and incorporated
-- [ ] `puzzles/shared_context.md` written with all known keys/clues
-- [ ] Rate limit headroom confirmed
-
-Then launch all 9.
+- [x] Super Bowl ad frame analysis complete
+- [x] Rewatch video analysis complete
+- [x] `puzzles/shared_context.md` written with extraction keys
+- [ ] Pick puzzle to focus on
+- [ ] Launch 3-5 agents with role-specific prompts
+- [ ] Monitor scratch files during execution
+- [ ] Merge results into notes.md when agents complete
+- [ ] Update state.json
+- [ ] Repeat for next puzzle

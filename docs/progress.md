@@ -8,7 +8,7 @@
 - Documented all known entry points, URLs, puzzle architecture
 - Downloaded all 12 subtitle files (3 hub + 9 playlist videos)
 - Downloaded all 14 info.json metadata files
-- Extracted all 9 pinned comment puzzle links → `results/puzzle_links.md`
+- Extracted all 9 pinned comment puzzle links → `clues/puzzle_links.md`
 
 ### Session 2 (~9:45 PM) — Sudoku Solve + Video Downloads
 - Ran sudoku solver on Puzzle #2 (LIFECHANGE) — **9 valid single-shift solutions found**
@@ -27,7 +27,7 @@
    - Braille dots on blast door, beam number `3634026-1`
    - QR code formed by military compound from aerial view
    - Mathematical formula `n^3 = m^2` on control room screen
-2. All 9 puzzle URLs fetched → `results/puzzle_content_analysis.md`
+2. All 9 puzzle URLs fetched → `clues/puzzle_content_analysis.md`
    - 6 puzzle types identified (P1 drop-quote, P3 TV shows, P4 locations, P5 Pokemon cage, P7 dog grid)
    - 3 platforms blocked by Cloudflare (P6 Medium, P8 imgpile, P9 500px)
    - 6 puzzle images downloaded to `puzzles/*/puzzle.png`
@@ -78,6 +78,40 @@
 - [ ] Scan QR code from aerial shot of ad
 - [ ] Solve crossword puzzle (clue text still missing)
 - [ ] Check for Hint #2 on mrbeast.salesforce.com (needs login)
+
+---
+
+### Session 4 (~midnight) — Multi-Agent Puzzle #1 Attack
+
+**Strategy shift:** Adopted multi-agent-per-puzzle approach (see `docs/parallel_agent_strategy.md`).
+
+**Puzzle #1 (Wells/Africa) — 4 parallel agents launched:**
+1. **Clue solver** → `clue_answers.md`: All 13 clues attempted. 5 HIGH confidence (ACHOO, OH NO, IOWAN, YO-YO, ROBIN HOOD), 6 medium, 2 low.
+2. **Grid transcriber** → agent still running; approximate 9×10 grid with ~28-30 blanks.
+3. **Community researcher** → `community_intel.md`: Nobody has publicly worked on P1. Least-discussed puzzle.
+4. **Quote guesser** → `quote_guesses.md`: Extensive analysis of partial text. Row 5 may contain "NEW PLANET". Mechanism (how clue letters map to blanks) still unclear.
+
+**New community intel (from web sweep):**
+- Community decoded from Super Bowl ad: CASH TENT, LASER MIX UP, TRUST AI, DINAMODI
+- Nobody has solved any puzzle (confirmed by MrBeast on GMA)
+- Manifold predicts solution by Feb 11-13
+- No Hint #2 publicly visible yet (may be behind mrbeast.salesforce.com login)
+
+**State updates:**
+- P8 (Pyramids) and P9 (Circle) upgraded from "blocked" to "solving" — images obtained
+- P9 answer guess: AXIOM (high confidence, thematic + letter analysis)
+- `shared_context.md` updated with community ad decodes
+- `results/state.json` updated
+
+### Pending
+- [ ] Get precise P1 grid transcription (column alignment is #1 blocker)
+- [ ] Determine P1 puzzle mechanism (how 13 answers map to ~30 blanks)
+- [ ] Solve P1 grid and extract 5-letter answer word
+- [ ] Analyze P8 (Pyramids) puzzle image — not yet looked at
+- [ ] Check for Hint #2 on mrbeast.salesforce.com (needs browser login)
+- [ ] Find MrBeast Super Bowl photos with hidden numbers
+- [ ] Solve remaining puzzles: P3, P4, P5, P7
+- [ ] Figure out extraction method for P2 (Sudoku) and P6 (Tents)
 
 ---
 
