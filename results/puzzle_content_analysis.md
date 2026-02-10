@@ -437,5 +437,5 @@ Medium, imgpile, and 500px cannot be accessed programmatically due to Cloudflare
 
 ---
 
-*Last updated: February 9, 2026, ~10:00 PM PST*
-*Status: 5 of 9 puzzle image URLs confirmed; 3 platforms need browser access*
+*Last updated: February 9, 2026, ~10:15 PM PST*
+*Status: 6 of 9 puzzles downloaded and analyzed (including Reddit Sudoku); 3 platforms need browser access (Medium, imgpile, 500px)*

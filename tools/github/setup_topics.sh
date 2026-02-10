@@ -14,8 +14,9 @@ gh repo edit "$REPO" \
 echo "=== Setting repo topics ==="
 # gh repo edit doesn't support --topic yet, so we use the API directly
 gh api -X PUT "repos/$REPO/topics" \
-  -f '{"names":["mrbeast","puzzle","treasure-hunt","arg","super-bowl","salesforce","million-dollar-puzzle","lone-shark-games","puzzle-hunt","ai-assisted"]}' \
-  --silent
+  --input - <<'EOF'
+{"names":["mrbeast","puzzle","treasure-hunt","arg","super-bowl","salesforce","million-dollar-puzzle","lone-shark-games","puzzle-hunt","ai-assisted"]}
+EOF
 
 echo "=== Done! ==="
 echo "View: gh repo view $REPO"
