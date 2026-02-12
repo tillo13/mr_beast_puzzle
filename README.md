@@ -2,13 +2,54 @@
 
 **The community has solved most puzzles. That's not the endgame.**
 
-This repo documents an AI-assisted approach to the [MrBeast x Salesforce Million Dollar Puzzle](https://mrbeast.salesforce.com/) (Super Bowl LX, Feb 2026) — but the real insight isn't in the puzzle solutions, it's in **understanding how Jimmy builds the puzzle in real-time**.
+This repo documents an AI-assisted approach to the [MrBeast x Salesforce Million Dollar Puzzle](https://mrbeast.salesforce.com/) (Super Bowl LX, Feb 2026) — but the real insight isn't in the puzzle solutions, it's in **understanding how MrBeast builds the puzzle in real-time**.
+
+---
+
+## 📅 2026-02-12 8am Update: What If It's All Noise So Far?
+
+**That's a MrBeast calling card move, right?**
+
+Here's the theory: What if EVERYTHING we've been analyzing (vault rims, monitor symbols, calendar dates, dollar bill sequences) is mostly decorative noise designed to drive engagement and video replays? Not fraud — the $1M is real — but MrBeast is **making it up as he goes** based on community progress, just like he does in challenge videos.
+
+### A Few Thoughts Why:
+
+**1. He literally told us in Hint #3:**
+> "We've been checking in on everything you've solved... We've seen a whole lot of stuff get crushed by giant groups of solvers. **So it's time to start adjusting what you can see.**"
+
+"Adjusting what you can see" = **pivoting the puzzle NOW**, not revealing pre-baked content.
+
+**2. It's his MO:**
+- "Last To Leave Circle" → Changed rules 3x mid-stream
+- "$1 vs $500K Hotel" → Extended from 24h to 3 days
+- He ALWAYS announces "new rule!" based on how it's going
+
+**3. Three hints in three days = rapid iteration:**
+- Feb 9: Hint #1 (community not finding meta-clue)
+- Feb 10: Hint #2 (community solved 9 words too fast)
+- Feb 11: Hint #3 (add 40 puzzles + Stage structure)
+
+That's sprint planning, not hint releases.
+
+**4. Community has all 9 answers — but NO WINNER:**
+If the puzzle was fully designed on Feb 8, someone would've won by now. Instead, the crossword (Stage 2 gate) has clues "populating as you progress" = being written NOW.
+
+**5. What matters shifts dynamically:**
+- Today's noise (vault rim) could be tomorrow's signal if community latches onto it
+- MrBeast's watching what trends → incorporates into Stage 3
+- **We're CO-CREATING the puzzle** by exploring interesting paths
+
+### What This Means:
+
+The real puzzle isn't "solve the clues" — it's **"understand MrBeast's design process and position yourself for the pivots."**
+
+Most people are grinding vault rim positions. Smarter play: watch for Hint #4, monitor crossword clue population, track what's trending on Reddit/Discord (that's what MrBeast's team is watching).
 
 ---
 
 ## 🎮 The Core Insight: Adaptive Puzzle Design
 
-**Jimmy doesn't have the full puzzle pre-baked. He's building it dynamically based on community progress.**
+**MrBeast doesn't have the full puzzle pre-baked. He's building it dynamically based on community progress.**
 
 ### Evidence from Hint #3 (Feb 11):
 
@@ -18,14 +59,14 @@ This repo documents an AI-assisted approach to the [MrBeast x Salesforce Million
 >
 > **"So it's time to start adjusting what you can see."**
 
-That last line is the key: **"adjusting what you can see."** Jimmy explicitly announced he's pivoting the puzzle based on community velocity. This is his MO from challenge videos — he announces rule changes mid-stream, adapts based on how contestants/audience react, and optimizes for entertainment.
+That last line is the key: **"adjusting what you can see."** MrBeast explicitly announced he's pivoting the puzzle based on community velocity. This is his MO from challenge videos — he announces rule changes mid-stream, adapts based on how contestants/audience react, and optimizes for entertainment.
 
-**Three hints in three days** (Feb 9-11) = rapid iteration based on observed community progress. The community solved all 9 Stage 0 puzzles in 3 days (probably expected to take 2-3 weeks), so Jimmy added 40+ "gift puzzles," revealed a Stage 0/1/2/3+ structure, and gated progress with a crossword.
+**Three hints in three days** (Feb 9-11) = rapid iteration based on observed community progress. The community solved all 9 Stage 0 puzzles in 3 days (probably expected to take 2-3 weeks), so MrBeast added 40+ "gift puzzles," revealed a Stage 0/1/2/3+ structure, and gated progress with a crossword.
 
 ### Why This Matters:
 
 - **Signal vs noise is dynamic** — Today's decorative detail could become tomorrow's puzzle mechanism if community latches onto it
-- **Trending discoveries influence future stages** — Jimmy's watching what goes viral on Reddit/Discord
+- **Trending discoveries influence future stages** — MrBeast's watching what goes viral on Reddit/Discord
 - **Crossword clues are populating dynamically** — Not all pre-written on Feb 8
 - **The puzzle is being CO-CREATED** by the community's exploration patterns
 
@@ -37,9 +78,9 @@ This isn't fraud — the $1M is real, someone will win by April 2. But the path 
 
 Instead of grinding every puzzle detail, this project focuses on:
 
-1. **Monitoring for pivots** — What signals indicate Jimmy's adapting the puzzle?
+1. **Monitoring for pivots** — What signals indicate MrBeast's adapting the puzzle?
 2. **Technical infrastructure** — Frame extraction, video analysis pipelines, data aggregation
-3. **Meta-game analysis** — Understanding Jimmy's design patterns from his challenge videos
+3. **Meta-game analysis** — Understanding MrBeast's design patterns from his challenge videos
 4. **Community intel synthesis** — Tracking what's trending across platforms
 
 ### Technical Capabilities Demonstrated:
@@ -95,9 +136,9 @@ But this is an **instruction**, not the final answer. The real puzzle is figurin
 ### Where Effort Should Focus:
 
 1. **Crossword clue population** — Monitor for new clues appearing
-2. **"Gift puzzles" discovery** — Jimmy gave gifts to friends with embedded puzzles
+2. **"Gift puzzles" discovery** — MrBeast gave gifts to friends with embedded puzzles
 3. **Watching for Hint #4** — Next pivot signal (probably drops by Feb 15-18 if progress stalls)
-4. **Community trend analysis** — What discoveries are going viral? (Jimmy's watching same sources)
+4. **Community trend analysis** — What discoveries are going viral? (MrBeast's watching same sources)
 
 ---
 
@@ -110,7 +151,7 @@ This puzzle is like a **real-world escape room**:
 
 The interesting challenge isn't "what's the answer" — it's:
 - **When does noise become signal?** (Vault rim analysis, monitor symbols, elephant codes)
-- **What will Jimmy activate next?** (Stage 3 mechanics)
+- **What will MrBeast activate next?** (Stage 3 mechanics)
 - **How do trending discoveries influence puzzle design?** (Co-creation)
 
 This is a **meta-puzzle about puzzle design itself.**
@@ -133,8 +174,8 @@ This repo contains:
 
 ### Analysis:
 - **Community intel synthesis:** What's trending across platforms
-- **Pivot detection:** Tracking Jimmy's adaptations via hints
-- **Meta-game theory:** How Jimmy designs challenges (from his videos)
+- **Pivot detection:** Tracking MrBeast's adaptations via hints
+- **Meta-game theory:** How MrBeast designs challenges (from his videos)
 
 ### What's NOT Here:
 - **Deep infrastructure findings:** Some patterns in API behavior, endpoint analysis, and trace data that came from Salesforce/Slack platform experience
@@ -153,7 +194,7 @@ This repo is part of the collaborative spirit encouraged by the organizers. Here
 
 ### Collaboration Philosophy:
 
-- **High-visibility discoveries influence the puzzle** — Trending = what Jimmy leans into
+- **High-visibility discoveries influence the puzzle** — Trending = what MrBeast leans into
 - **Share public findings** — Vault rim patterns, monitor symbols, crossword progress
 - **Platform expertise helps** — Salesforce/Slack background useful for sorting signal from noise
 - **Contribute to community resources** — Google Doc, Reddit threads, Discord
@@ -190,9 +231,9 @@ This repo is part of the collaborative spirit encouraged by the organizers. Here
 
 ---
 
-## 🎬 The Jimmy MO Pattern
+## 🎬 The MrBeast MO Pattern
 
-Understanding this puzzle requires understanding how Jimmy runs challenges:
+Understanding this puzzle requires understanding how MrBeast runs challenges:
 
 ### From His Videos:
 - **"Last To Leave Circle"** → Changed rules 3x mid-stream ("new rule!", "we're moving inside")
@@ -217,7 +258,7 @@ Understanding this puzzle requires understanding how Jimmy runs challenges:
 - Technical infrastructure → Video analysis, data aggregation, API discovery
 - Strategic positioning → When to commit energy, what to document, how to influence
 
-**The differentiator:** Most solvers are grinding puzzles. This project watches Jimmy's design process in real-time and adapts strategy accordingly.
+**The differentiator:** Most solvers are grinding puzzles. This project watches MrBeast's design process in real-time and adapts strategy accordingly.
 
 ---
 
