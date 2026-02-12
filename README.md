@@ -12,6 +12,10 @@ This repo documents an AI-assisted approach to the [MrBeast x Salesforce Million
 
 Here's the theory: What if EVERYTHING we've been analyzing (vault rims, monitor symbols, calendar dates, dollar bill sequences) is mostly decorative noise designed to drive engagement and video replays? Not fraud — the $1M is real — but MrBeast is **making it up as he goes** based on community progress, just like he does in challenge videos.
 
+**Context:** My son and I are working on this together — he's a huge MrBeast fan, I love puzzles and Salesforce/Slack tech. We didn't think much of the Super Bowl ad at first, but he caught it again the next day and we got to work. **The "pivot theory" is his.** He watches every MrBeast challenge video and kept pointing out *"Dad, he ALWAYS changes the rules. Remember the circle challenge? The hotel video?"* When Hint #3 dropped with "adjusting what you can see," he called it: **MrBeast is pivoting the puzzle in real-time.**
+
+His pattern recognition (YouTuber behavior, game mechanics) + my technical analysis (Salesforce/Slack platform, API traces) = this repo's approach.
+
 ### A Few Thoughts Why:
 
 **1. He literally told us in Hint #3:**
@@ -45,22 +49,6 @@ The real puzzle isn't "solve the clues" — it's **"understand MrBeast's design 
 
 Most people are grinding vault rim positions. Smarter play: watch for Hint #4, monitor crossword clue population, track what's trending on Reddit/Discord (that's what MrBeast's team is watching).
 
----
-
-## 🎮 Why This Project Exists (Father-Son Puzzle Team)
-
-My son and I started this together — **he loves MrBeast videos, I love puzzles.** When the Super Bowl ad dropped, we both got hooked for different reasons.
-
-**His skillset:** Game mechanics, video pattern recognition, understanding YouTuber behavior
-**My skillset:** Salesforce/Slack platform architecture, technical infrastructure, systems thinking
-
-**The "adaptive puzzle" theory?** That was his observation. He watches every MrBeast challenge video and kept saying *"Dad, he ALWAYS changes the rules halfway through. Remember when he moved the circle challenge inside? Or extended the hotel video to 3 days?"* When Hint #3 dropped with "adjusting what you can see," he called it immediately.
-
-We both love real-world puzzle hunts (escape rooms, ARGs, geocaching), so this has been a perfect project — combining his media literacy with my technical deep-dives. It's been a fun back-and-forth: he'll spot something in a video frame, I'll trace it through the platform's API structure.
-
-**This repo is that collaboration.** His pattern recognition + my infrastructure analysis = watching the meta-game instead of grinding details.
-
----
 
 ## 🎮 The Core Insight: Adaptive Puzzle Design
 
