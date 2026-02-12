@@ -93,9 +93,9 @@ Instead of grinding every puzzle detail, this project focuses on:
 
 > "Salesforce's AI agent Slackbot will eventually be activated to help people 'solve certain parts of the puzzle,' with users able to ask it questions to help 'point [people] in the right direction.'" — [ARGNet](https://www.argn.com/2026/02/start_slacking_off_with_mrbeasts_million_dollar_puzzle_hunt/)
 
-The final submission is via **Slack to MrBeast** — not a web form, not email, but Slack. The platform isn't just hosting the puzzle, **it's part of the mechanism**.
+Most solvers will use Slackbot when it's activated. But understanding the **backend architecture** — how Agentforce works under the hood, how SFDC data models connect, how Slack API endpoints behave, what HAR traces reveal about request flows — shows you HOW the mechanism works, not just THAT it works.
 
-Understanding Salesforce architecture (Agentforce patterns, SFDC data models, Slack API endpoints, HAR traces) reveals structure others miss. Some of the most interesting findings in this repo came from **scouring the platform itself** — not the videos.
+The final submission is via **Slack to MrBeast** — not a web form, not email, but Slack. The platform isn't just hosting the puzzle, **it's part of the mechanism**. Years of Salesforce/Slack experience means seeing structure others don't.
 
 ### Technical Capabilities Demonstrated:
 
