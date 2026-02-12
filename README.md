@@ -97,16 +97,9 @@ We're actively working on the puzzles and crossword! Making steady progress but 
 
 This repo is part of the collaborative spirit encouraged by the organizers. Here's how to connect:
 
-### Contributing
 - **Open an issue** — Share a finding, ask about a puzzle, or propose ideas
 - **Open a PR** — Contribute methodology, solver code, or analysis
 - **Fork and experiment** — Run your own AI agents with Claude Code using `CLAUDE.md`
-
-### Private Collaboration
-If you have significant findings or want to explore partnering on this puzzle, feel free to reach out via GitHub ([@tillo13](https://github.com/tillo13)). I keep competitive details private but I'm open to the right collaboration.
-
-### To the Organizers
-**MrBeast / Lone Shark Games / Salesforce:** Fantastic puzzle design! The multi-stage structure and dynamic crossword make this genuinely fun. If you'd like to see how AI is tackling this or discuss partnership opportunities, happy to chat.
 
 ## Repo Structure
 
