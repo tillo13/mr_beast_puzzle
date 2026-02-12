@@ -14,7 +14,7 @@ Here's the theory: What if EVERYTHING we've been analyzing (vault rims, monitor 
 
 **Context:** My son and I are working on this together — he's a huge MrBeast fan, I love puzzles and Salesforce/Slack tech. We didn't think much of the Super Bowl ad at first, but he caught it again the next day and we got to work. **The "pivot theory" is his.** He watches every MrBeast challenge video and kept pointing out *"Dad, he ALWAYS changes the rules. Remember the circle challenge? The hotel video?"* When Hint #3 dropped with "adjusting what you can see," he called it: **MrBeast is pivoting the puzzle in real-time.**
 
-His pattern recognition (YouTuber behavior, game mechanics) + my technical analysis (Salesforce/Slack platform, API traces) = this repo's approach.
+His pattern recognition (YouTuber behavior, game mechanics) + my technical analysis (Salesforce/Slack platform knowledge) = this repo's approach.
 
 ### A Few Thoughts Why:
 
@@ -99,7 +99,7 @@ The final submission is via **Slack to MrBeast** — not a web form, not email, 
 
 ### Technical Capabilities Demonstrated:
 
-- **Salesforce/Slack platform expertise** — Agentforce patterns, SFDC data models, API endpoint discovery via HAR analysis
+- **Salesforce/Slack platform expertise** — Understanding SFDC and Slack APIs and endpoints has been pretty interesting...
 - **Automated video analysis** — Frame extraction at 2fps/4fps, Qwen vision LLM for frame-by-frame analysis
 - **Data aggregation** — Pulling clues from Reddit, Discord, Google Docs, community PDFs
 - **Systematic documentation** — Structured state tracking, findings index, answer keys
@@ -116,8 +116,14 @@ The community has crushed most puzzles. If you want answers, check these sources
 
 - **Community Google Doc:** https://bris.kr/qo (collaborative crossword solving, confirmed answers)
 - **"The Mr. Beast Files" PDF:** 102+ page community compilation (all 9 puzzle solutions, location theories)
-- **Reddit Megathread:** r/ARG and r/MrBeast puzzle discussions
-- **Discord:** Lone Shark Games server
+- **Reddit:**
+  - [r/ARG Discussion Thread](https://www.reddit.com/r/ARG/)
+  - [r/MrBeast Puzzle Megathread](https://www.reddit.com/r/MrBeast/)
+- **Discord:**
+  - [Lone Shark Games Server](https://lonesharkgames.com/discord/)
+  - Various puzzle-solving community servers
+- **ARGNet:** [Start Slacking Off with MrBeast's Million Dollar Puzzle Hunt](https://www.argn.com/2026/02/start_slacking_off_with_mrbeasts_million_dollar_puzzle_hunt/)
+- **YouTube:** Community solving videos and livestreams
 
 ### What the Community Has Solved (as of Feb 11):
 
@@ -184,7 +190,7 @@ This repo contains:
 ### Tools:
 - **Video analysis scripts:** Frame extraction, Qwen vision LLM integration
 - **Source monitoring:** Automated tracking of Reddit, Discord, community docs
-- **HAR analysis tools:** API endpoint discovery
+- **Platform exploration:** SFDC and Slack familiarity
 
 ### Analysis:
 - **Community intel synthesis:** What's trending across platforms
@@ -192,7 +198,7 @@ This repo contains:
 - **Meta-game theory:** How MrBeast designs challenges (from his videos)
 
 ### What's NOT Here:
-- **Deep platform findings:** Specific Agentforce patterns, SFDC data model discoveries, Slack API endpoint behaviors, and HAR trace insights from years of Salesforce/Slack experience — some competitive advantages stay private
+- **Deep platform findings:** Years of Salesforce/Slack experience has revealed some interesting patterns — some competitive advantages stay private
 - **Over-committed theories:** Not burning energy on unconfirmed extraction methods
 - **Noise documentation:** Only high-signal findings (we don't document every frame detail)
 
@@ -218,9 +224,8 @@ This repo is part of the collaborative spirit encouraged by the organizers. Here
 ## 🔧 Technical Stack
 
 ### Infrastructure:
-- **Salesforce/Slack Platform** — Agentforce patterns, SFDC data models, Slack API endpoint analysis
+- **Salesforce/Slack Platform** — Understanding SFDC and Slack APIs and endpoints has been pretty interesting...
 - **AI Agents** — Multiple LLMs including Claude Sonnet 4.5, Qwen Vision for frame analysis
-- **HAR file capture + trace analysis** — API endpoint discovery and behavior patterns
 - **yt-dlp** — Video downloads (4K when available)
 - **ffmpeg** — Frame extraction at 2fps/4fps
 
@@ -241,6 +246,10 @@ This repo is part of the collaborative spirit encouraged by the organizers. Here
 | 9-Video Playlist | https://www.youtube.com/playlist?list=PLj-VLkYRjRxm5HVGFVpPP5W7jkvvzd1q7 |
 | Super Bowl Ad | https://www.youtube.com/watch?v=JBy1T5IykkU |
 | Community Google Doc | https://bris.kr/qo |
+| Lone Shark Games Discord | https://lonesharkgames.com/discord/ |
+| ARGNet Article | https://www.argn.com/2026/02/start_slacking_off_with_mrbeasts_million_dollar_puzzle_hunt/ |
+| r/ARG Subreddit | https://www.reddit.com/r/ARG/ |
+| r/MrBeast Subreddit | https://www.reddit.com/r/MrBeast/ |
 | Official Hints | [hints/](hints/) |
 | All Puzzle Links | [clues/puzzle_links.md](clues/puzzle_links.md) |
 
@@ -270,7 +279,7 @@ Understanding this puzzle requires understanding how MrBeast runs challenges:
 
 - Community has most puzzle solutions → Check Google Doc / PDF
 - This repo focuses on the **meta-game** → Monitoring shifts, watching for pivots
-- Technical infrastructure → Video analysis, data aggregation, API discovery
+- Technical infrastructure → Video analysis, data aggregation, platform knowledge
 - Strategic positioning → When to commit energy, what to document, how to influence
 
 **The differentiator:** Most solvers are grinding puzzles. This project watches MrBeast's design process in real-time and adapts strategy accordingly.
