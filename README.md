@@ -78,21 +78,32 @@ This isn't fraud — the $1M is real, someone will win by April 2. But the path 
 
 Instead of grinding every puzzle detail, this project focuses on:
 
-1. **Monitoring for pivots** — What signals indicate MrBeast's adapting the puzzle?
-2. **Technical infrastructure** — Frame extraction, video analysis pipelines, data aggregation
-3. **Meta-game analysis** — Understanding MrBeast's design patterns from his challenge videos
-4. **Community intel synthesis** — Tracking what's trending across platforms
+1. **Platform expertise** — Understanding Salesforce/Slack architecture (Agentforce, SFDC patterns, API endpoints)
+2. **Monitoring for pivots** — What signals indicate MrBeast's adapting the puzzle?
+3. **Technical infrastructure** — Frame extraction, video analysis pipelines, data aggregation
+4. **Meta-game analysis** — Understanding MrBeast's design patterns from his challenge videos
+5. **Community intel synthesis** — Tracking what's trending across platforms
+
+### Why Platform Knowledge Matters:
+
+**MrBeast explicitly said the Salesforce/Slack platform IS part of the puzzle:**
+
+> "Salesforce's AI agent Slackbot will eventually be activated to help people 'solve certain parts of the puzzle,' with users able to ask it questions to help 'point [people] in the right direction.'" — [ARGNet](https://www.argn.com/2026/02/start_slacking_off_with_mrbeasts_million_dollar_puzzle_hunt/)
+
+The final submission is via **Slack to MrBeast** — not a web form, not email, but Slack. The platform isn't just hosting the puzzle, **it's part of the mechanism**.
+
+Understanding Salesforce architecture (Agentforce patterns, SFDC data models, Slack API endpoints, HAR traces) reveals structure others miss. Some of the most interesting findings in this repo came from **scouring the platform itself** — not the videos.
 
 ### Technical Capabilities Demonstrated:
 
+- **Salesforce/Slack platform expertise** — Agentforce patterns, SFDC data models, API endpoint discovery via HAR analysis
 - **Automated video analysis** — Frame extraction at 2fps/4fps, Qwen vision LLM for frame-by-frame analysis
 - **Data aggregation** — Pulling clues from Reddit, Discord, Google Docs, community PDFs
-- **HAR file analysis** — Discovered hidden API endpoints (Slackbot, Vault, Insights) not visible in web UI
 - **Systematic documentation** — Structured state tracking, findings index, answer keys
 
 ### The Angle:
 
-Most solvers are brute-forcing puzzles. This repo explores **strategic positioning** — watching for shifts, understanding when to commit energy, and recognizing what matters vs what's noise.
+Most solvers are brute-forcing puzzles. This repo explores **strategic positioning** — watching for shifts, understanding when to commit energy, and recognizing what matters vs what's noise. Plus: **deep platform knowledge** others don't have.
 
 ---
 
@@ -178,7 +189,7 @@ This repo contains:
 - **Meta-game theory:** How MrBeast designs challenges (from his videos)
 
 ### What's NOT Here:
-- **Deep infrastructure findings:** Some patterns in API behavior, endpoint analysis, and trace data that came from Salesforce/Slack platform experience
+- **Deep platform findings:** Specific Agentforce patterns, SFDC data model discoveries, Slack API endpoint behaviors, and HAR trace insights from years of Salesforce/Slack experience — some competitive advantages stay private
 - **Over-committed theories:** Not burning energy on unconfirmed extraction methods
 - **Noise documentation:** Only high-signal findings (we don't document every frame detail)
 
@@ -204,12 +215,14 @@ This repo is part of the collaborative spirit encouraged by the organizers. Here
 ## 🔧 Technical Stack
 
 ### Infrastructure:
+- **Salesforce/Slack Platform** — Agentforce patterns, SFDC data models, Slack API endpoint analysis
 - **AI Agents** — Multiple LLMs including Claude Sonnet 4.5, Qwen Vision for frame analysis
+- **HAR file capture + trace analysis** — API endpoint discovery and behavior patterns
 - **yt-dlp** — Video downloads (4K when available)
 - **ffmpeg** — Frame extraction at 2fps/4fps
-- **HAR file capture** — API endpoint discovery
 
 ### Techniques:
+- **Platform-native exploration** — Using SFDC/Slack architecture knowledge to find structure
 - **Parallel agent strategy** — Multiple angles on same problem
 - **Structured state management** — Single source of truth across sessions
 - **Community intel synthesis** — Aggregating across platforms
@@ -280,7 +293,7 @@ Built by [@tillo13](https://github.com/tillo13) with AI agents — an experiment
 - Understanding adaptive game design
 - Technical infrastructure for data aggregation
 
-**Portfolio piece demonstrating:** Systems thinking, video analysis pipelines, community intelligence synthesis, strategic positioning, and multi-agent AI coordination.
+**Portfolio piece demonstrating:** Salesforce/Slack platform expertise (Agentforce, SFDC architecture, API patterns), systems thinking, video analysis pipelines, community intelligence synthesis, strategic positioning, and multi-agent AI coordination.
 
 ---
 
