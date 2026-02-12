@@ -137,7 +137,7 @@ This repo contains:
 - **Meta-game theory:** How Jimmy designs challenges (from his videos)
 
 ### What's NOT Here:
-- **Private competitive advantages:** Slackbot hidden API details, unique discoveries
+- **Deep infrastructure findings:** Some patterns in API behavior, endpoint analysis, and trace data that came from Salesforce/Slack platform experience
 - **Over-committed theories:** Not burning energy on unconfirmed extraction methods
 - **Noise documentation:** Only high-signal findings (we don't document every frame detail)
 
@@ -155,7 +155,7 @@ This repo is part of the collaborative spirit encouraged by the organizers. Here
 
 - **High-visibility discoveries influence the puzzle** — Trending = what Jimmy leans into
 - **Share public findings** — Vault rim patterns, monitor symbols, crossword progress
-- **Keep private advantages** — Hidden API access, unique infrastructure
+- **Platform expertise helps** — Salesforce/Slack background useful for sorting signal from noise
 - **Contribute to community resources** — Google Doc, Reddit threads, Discord
 
 ---
