@@ -81,7 +81,7 @@ This isn't fraud — the $1M is real, someone will win by April 2. But the path 
 
 **We're not manually clicking through Reddit threads and Discord channels — we're building an agentic monitoring system.**
 
-Using **local LLMs** (LMStudio, Qwen, Llama3) and **agentic AI patterns**, we've automated the heavy lifting:
+Using **multiple LLMs** (Claude Sonnet, Qwen Vision, Llama3 via LMStudio/Ollama) and **agentic orchestration tools** (n8n workflows, LangChain, investigating CrewAI/LlamaIndex patterns), we've automated the heavy lifting:
 
 ### How It Works:
 - **Agents constantly monitor** community sources (Reddit, Discord, Google Doc, MrBeast socials, puzzle site)
@@ -247,8 +247,10 @@ This repo is part of the collaborative spirit encouraged by the organizers. Here
 ## 🔧 Technical Stack
 
 ### Agentic AI Infrastructure:
-- **Local LLM Orchestration** — LMStudio, Qwen Vision, Llama3 for multi-agent coordination
-- **Automated Monitoring** — Scheduled agents watching Reddit, Discord, Google Doc, puzzle site, MrBeast socials
+- **Local LLM Orchestration** — Claude Sonnet 4.5, Qwen Vision, Llama3 (via LMStudio/Ollama), LocalAI
+- **Agentic Frameworks** — Investigating: LangChain, CrewAI, LlamaIndex, AutoGPT patterns for multi-agent coordination
+- **Workflow Automation** — n8n for agent orchestration, exploring Prefect/Airflow for scheduled monitoring
+- **Automated Monitoring** — Agents watching Reddit, Discord, Google Doc, puzzle site, MrBeast socials
 - **Signal Processing** — LLM-based classification: "Is this a pivot? A hint? Community breakthrough? Or noise?"
 - **Pattern Detection** — Agents flag: MrBeast pivot language, crossword clue population, trending theories
 
@@ -337,15 +339,18 @@ Understanding this puzzle requires understanding how MrBeast runs challenges:
 ## 🚀 About
 
 Built by [@tillo13](https://github.com/tillo13) — an experiment in **agentic AI workflows**:
-- Multi-agent monitoring systems (local LLM orchestration)
+- Multi-agent monitoring systems (LangChain, CrewAI, n8n orchestration)
+- Local LLM coordination (Claude, Qwen, Llama3, Ollama, LocalAI)
 - Signal detection in noisy environments
 - Automated intelligence synthesis
 - Meta-game analysis and adaptive strategy
-- Salesforce/Slack platform patterns
+- Salesforce/Slack platform patterns (Agentforce investigation)
 
 **Portfolio piece demonstrating:**
-- **Agentic AI expertise** — Building multi-agent systems with local LLMs (LMStudio, Qwen, Llama3)
-- **Salesforce/Agentforce alignment** — Investigating agentic workflow patterns
+- **Agentic AI stack** — LangChain, n8n, CrewAI, LlamaIndex, AutoGPT patterns
+- **Local LLM orchestration** — Claude Sonnet, Qwen Vision, Llama3 (LMStudio/Ollama/LocalAI)
+- **Workflow automation** — n8n, Prefect, Airflow for scheduled agent monitoring
+- **Salesforce/Agentforce alignment** — Investigating agentic workflow patterns for SFDC ecosystem
 - **Signal vs noise** — Automated detection in high-volume data streams
 - **Platform architecture** — SFDC/Slack API understanding
 - **Systems thinking** — Automation handles monitoring, humans handle insights
