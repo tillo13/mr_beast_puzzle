@@ -98,6 +98,8 @@ This aligns with **Salesforce's Agentforce vision** — investigating if Agentfo
 
 **Personal angle:** Building expertise in agentic AI workflows — applicable beyond puzzles to any signal-detection problem in noisy environments.
 
+> **Note:** Full agentic stack (CrewAI agents, n8n workflows, multi-LLM orchestration) is in private repo to maintain competitive advantage during active puzzle. This public repo shows the approach and methodology. Serious collaborators welcome — reach out if you want to share insights.
+
 ---
 
 ## 🔍 What This Repo Does
@@ -221,9 +223,12 @@ This repo contains:
 - **Meta-game theory:** How MrBeast designs challenges (from his videos)
 
 ### What's NOT Here:
+- **Full agentic AI stack:** We're running CrewAI, LangChain, n8n workflows in private repo — full monitoring agents, automated signal detection, multi-LLM orchestration patterns. Keeping some competitive edge while puzzle is active.
 - **Deep platform findings:** Years of Salesforce/Slack experience has revealed some interesting patterns — some competitive advantages stay private
 - **Over-committed theories:** Not burning energy on unconfirmed extraction methods
 - **Noise documentation:** Only high-signal findings (we don't document every frame detail)
+
+**Open to collaboration:** If you're working on agentic monitoring approaches or want to share platform insights, open an issue or reach out. Happy to share more with serious collaborators.
 
 ---
 
