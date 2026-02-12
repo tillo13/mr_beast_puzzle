@@ -77,15 +77,38 @@ This isn't fraud — the $1M is real, someone will win by April 2. But the path 
 
 ---
 
+## 🤖 The Agentic AI Approach (Our Strategy)
+
+**We're not manually clicking through Reddit threads and Discord channels — we're building an agentic monitoring system.**
+
+Using **local LLMs** (LMStudio, Qwen, Llama3) and **agentic AI patterns**, we've automated the heavy lifting:
+
+### How It Works:
+- **Agents constantly monitor** community sources (Reddit, Discord, Google Doc, MrBeast socials, puzzle site)
+- **LLM parsers analyze** new content: "Signal or noise? Pivot or chatter?"
+- **Pattern detection** flags: new hints, crossword clue population, MrBeast language shifts, community breakthroughs
+- **We zoom in** when agents surface valid hits — automation handles the noise, we handle the signal
+
+### Why Agentic AI?
+
+**Most solvers:** Manually refreshing 10 tabs, scrolling threads, clicking through posts
+**Us:** Agentic system watches 24/7, alerts on high-priority developments
+
+This aligns with **Salesforce's Agentforce vision** — investigating if Agentforce patterns apply here, but primarily using local LLM orchestration (lower latency, full control, no API costs).
+
+**Personal angle:** Building expertise in agentic AI workflows — applicable beyond puzzles to any signal-detection problem in noisy environments.
+
+---
+
 ## 🔍 What This Repo Does
 
 Instead of grinding every puzzle detail, this project focuses on:
 
-1. **Platform expertise** — Understanding Salesforce/Slack architecture (Agentforce, SFDC patterns, API endpoints)
-2. **Monitoring for pivots** — What signals indicate MrBeast's adapting the puzzle?
+1. **Agentic monitoring** — Automated agents watch for MrBeast's pivots, community trends, crossword updates
+2. **Platform expertise** — Understanding Salesforce/Slack architecture (Agentforce, SFDC patterns, API endpoints)
 3. **Technical infrastructure** — Frame extraction, video analysis pipelines, data aggregation
 4. **Meta-game analysis** — Understanding MrBeast's design patterns from his challenge videos
-5. **Community intel synthesis** — Tracking what's trending across platforms
+5. **Local LLM orchestration** — Multi-agent systems sorting signal from noise
 
 ### Why Platform Knowledge Matters:
 
@@ -223,18 +246,26 @@ This repo is part of the collaborative spirit encouraged by the organizers. Here
 
 ## 🔧 Technical Stack
 
-### Infrastructure:
-- **Salesforce/Slack Platform** — Understanding SFDC and Slack APIs and endpoints has been pretty interesting...
-- **AI Agents** — Multiple LLMs including Claude Sonnet 4.5, Qwen Vision for frame analysis
+### Agentic AI Infrastructure:
+- **Local LLM Orchestration** — LMStudio, Qwen Vision, Llama3 for multi-agent coordination
+- **Automated Monitoring** — Scheduled agents watching Reddit, Discord, Google Doc, puzzle site, MrBeast socials
+- **Signal Processing** — LLM-based classification: "Is this a pivot? A hint? Community breakthrough? Or noise?"
+- **Pattern Detection** — Agents flag: MrBeast pivot language, crossword clue population, trending theories
+
+### Platform Expertise:
+- **Salesforce/Slack** — Understanding SFDC and Slack APIs and endpoints has been pretty interesting...
+- **Agentforce Investigation** — Exploring if Agentforce patterns apply to puzzle monitoring
+
+### Video Analysis:
 - **yt-dlp** — Video downloads (4K when available)
 - **ffmpeg** — Frame extraction at 2fps/4fps
+- **Qwen Vision LLM** — Frame-by-frame analysis
 
 ### Techniques:
+- **Agentic workflows** — Automation handles noise, humans handle signal
 - **Platform-native exploration** — Using SFDC/Slack architecture knowledge to find structure
-- **Parallel agent strategy** — Multiple angles on same problem
 - **Structured state management** — Single source of truth across sessions
-- **Community intel synthesis** — Aggregating across platforms
-- **Pivot detection** — Monitoring hints for adaptation signals
+- **Real-time pivot detection** — Agents alert when MrBeast adapts puzzle
 
 ---
 
@@ -275,14 +306,20 @@ Understanding this puzzle requires understanding how MrBeast runs challenges:
 
 ## 🎯 Bottom Line
 
-**This repo isn't about having the answers. It's about understanding the game.**
+**This repo isn't about having the answers. It's about understanding the game — and using agentic AI to watch it in real-time.**
 
+**The Differentiator:**
+- **Most solvers:** Manually grinding puzzles, refreshing Reddit threads, scrolling Discord
+- **This approach:** Agentic AI system monitors 24/7, surfaces high-priority signals, lets us zoom in on what matters
+
+**What We're Actually Doing:**
 - Community has most puzzle solutions → Check Google Doc / PDF
-- This repo focuses on the **meta-game** → Monitoring shifts, watching for pivots
-- Technical infrastructure → Video analysis, data aggregation, platform knowledge
-- Strategic positioning → When to commit energy, what to document, how to influence
+- We're watching the **meta-game** → Automated monitoring for MrBeast's pivots
+- Agentic workflows → Automation handles noise, we handle signal
+- Platform knowledge → SFDC/Slack understanding reveals structure
+- Strategic positioning → Commit energy when agents flag valid hits
 
-**The differentiator:** Most solvers are grinding puzzles. This project watches MrBeast's design process in real-time and adapts strategy accordingly.
+**This isn't just puzzle-solving — it's building agentic AI expertise applicable to any signal-detection problem in noisy environments.**
 
 ---
 
@@ -299,13 +336,19 @@ Understanding this puzzle requires understanding how MrBeast runs challenges:
 
 ## 🚀 About
 
-Built by [@tillo13](https://github.com/tillo13) with AI agents — an experiment in:
-- AI-assisted puzzle solving
-- Meta-game analysis
-- Understanding adaptive game design
-- Technical infrastructure for data aggregation
+Built by [@tillo13](https://github.com/tillo13) — an experiment in **agentic AI workflows**:
+- Multi-agent monitoring systems (local LLM orchestration)
+- Signal detection in noisy environments
+- Automated intelligence synthesis
+- Meta-game analysis and adaptive strategy
+- Salesforce/Slack platform patterns
 
-**Portfolio piece demonstrating:** Salesforce/Slack platform expertise (Agentforce, SFDC architecture, API patterns), systems thinking, video analysis pipelines, community intelligence synthesis, strategic positioning, and multi-agent AI coordination.
+**Portfolio piece demonstrating:**
+- **Agentic AI expertise** — Building multi-agent systems with local LLMs (LMStudio, Qwen, Llama3)
+- **Salesforce/Agentforce alignment** — Investigating agentic workflow patterns
+- **Signal vs noise** — Automated detection in high-volume data streams
+- **Platform architecture** — SFDC/Slack API understanding
+- **Systems thinking** — Automation handles monitoring, humans handle insights
 
 ---
 
