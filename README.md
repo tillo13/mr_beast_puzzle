@@ -190,7 +190,7 @@ This repo is part of the collaborative spirit encouraged by the organizers. Here
 
 - **Open an issue** — Share a finding, discuss theories, or ask about methodology
 - **Open a PR** — Contribute tools, analysis, or community intel
-- **Fork and experiment** — Run your own AI agents with Claude Code using `CLAUDE.md`
+- **Fork and experiment** — Run your own AI agents using `CLAUDE.md` for context
 
 ### Collaboration Philosophy:
 
@@ -204,8 +204,7 @@ This repo is part of the collaborative spirit encouraged by the organizers. Here
 ## 🔧 Technical Stack
 
 ### Infrastructure:
-- **Claude Code** (Sonnet 4.5) — Primary AI agent
-- **Qwen Vision LLM** — Frame-by-frame video analysis
+- **AI Agents** — Multiple LLMs including Claude Sonnet 4.5, Qwen Vision for frame analysis
 - **yt-dlp** — Video downloads (4K when available)
 - **ffmpeg** — Frame extraction at 2fps/4fps
 - **HAR file capture** — API endpoint discovery
@@ -275,13 +274,13 @@ Understanding this puzzle requires understanding how MrBeast runs challenges:
 
 ## 🚀 About
 
-Built by [@tillo13](https://github.com/tillo13) with Claude Code — an experiment in:
+Built by [@tillo13](https://github.com/tillo13) with AI agents — an experiment in:
 - AI-assisted puzzle solving
 - Meta-game analysis
 - Understanding adaptive game design
 - Technical infrastructure for data aggregation
 
-**Portfolio piece demonstrating:** Systems thinking, video analysis pipelines, community intelligence synthesis, strategic positioning, and Claude Code agent coordination.
+**Portfolio piece demonstrating:** Systems thinking, video analysis pipelines, community intelligence synthesis, strategic positioning, and multi-agent AI coordination.
 
 ---
 
