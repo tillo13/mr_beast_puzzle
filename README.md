@@ -47,6 +47,21 @@ Most people are grinding vault rim positions. Smarter play: watch for Hint #4, m
 
 ---
 
+## 🎮 Why This Project Exists (Father-Son Puzzle Team)
+
+My son and I started this together — **he loves MrBeast videos, I love puzzles.** When the Super Bowl ad dropped, we both got hooked for different reasons.
+
+**His skillset:** Game mechanics, video pattern recognition, understanding YouTuber behavior
+**My skillset:** Salesforce/Slack platform architecture, technical infrastructure, systems thinking
+
+**The "adaptive puzzle" theory?** That was his observation. He watches every MrBeast challenge video and kept saying *"Dad, he ALWAYS changes the rules halfway through. Remember when he moved the circle challenge inside? Or extended the hotel video to 3 days?"* When Hint #3 dropped with "adjusting what you can see," he called it immediately.
+
+We both love real-world puzzle hunts (escape rooms, ARGs, geocaching), so this has been a perfect project — combining his media literacy with my technical deep-dives. It's been a fun back-and-forth: he'll spot something in a video frame, I'll trace it through the platform's API structure.
+
+**This repo is that collaboration.** His pattern recognition + my infrastructure analysis = watching the meta-game instead of grinding details.
+
+---
+
 ## 🎮 The Core Insight: Adaptive Puzzle Design
 
 **MrBeast doesn't have the full puzzle pre-baked. He's building it dynamically based on community progress.**
