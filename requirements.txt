@@ -1,0 +1,8 @@
+# Python dependencies for puzzle-solving scripts
+requests>=2.31.0
+
+# CrewAI Agentic Monitoring (scripts_global/crew_puzzle_monitor.py)
+crewai>=0.28.0
+crewai-tools>=0.2.0
+langchain-ollama>=0.1.0
+praw>=7.7.1  # Reddit API

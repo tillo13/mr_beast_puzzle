@@ -1,0 +1,23 @@
+{
+  "description": "A few Beastbot responses we've gotten on well-known community topics. We've found that how you frame your Puzzle Cards matters — being specific about what you've observed (not what you think the answer is) tends to get more useful responses.",
+  "caveat": "Beastbot never confirms specific answers. It confirms puzzle types and gives structural hints. Everything here should be treated as a nudge, not proof. Data may be stale.",
+  "samples": [
+    {
+      "topic": "Crossword Structure",
+      "beastbot_response": "Yes, this is a puzzle. One that's going through some changes. ||| This is likely a crossword. In a crossword, numbered clues lead to words reading across and down. Crosswords are symmetrical and all letters are in both across and down clues.",
+      "why_this_is_interesting": "Beastbot confirmed the crossword is 'going through some changes' — aligns with the adaptive puzzle design MrBeast announced in Hint #3. The textbook crossword definition is Beastbot's way of confirming you're looking at the right puzzle type."
+    },
+    {
+      "topic": "Soups Hidden in Theme Entries",
+      "beastbot_response": "Yes, this is a puzzle. This is likely a word search. The number of water drops may matter.",
+      "why_this_is_interesting": "Beastbot called it a 'word search' (hidden words within longer entries) and hinted that 'water drops' from the BTS video may be relevant. The community has found 9 of the 11 expected soup names — the gap suggests 2 more are hidden somewhere."
+    },
+    {
+      "topic": "Soup-to-Crossword Intersection",
+      "beastbot_response": "Yes, this is a puzzle. This is likely a wordoku. A wordoku is a sudoku with letters. While most sudoku use the numbers 1 to 9, the rules of sudoku can work with any set of nine elements. In wordoku puzzles, some row, column, or diagonal (sometimes shaded or indicated by an arrow, but sometimes not) spells out a word or phrase using nine different letters. Not all lines are straight.",
+      "why_this_is_interesting": "Beastbot introduced a new puzzle type — wordoku — suggesting part of the crossword grid may function as a Sudoku variant using letters. 'Not all lines are straight' is a cryptic hint about the extraction path."
+    }
+  ],
+  "note": "If you're working on this puzzle and want to compare notes on Beastbot strategy, open an issue on this repo.",
+  "last_updated": "2026-02-17"
+}

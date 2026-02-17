@@ -1,0 +1,68 @@
+name: "Clue Found"
+description: Report a clue or piece of evidence you've discovered
+title: "[CLUE] "
+labels: ["clue", "needs-verification"]
+body:
+  - type: dropdown
+    id: puzzle
+    attributes:
+      label: Which puzzle does this relate to?
+      options:
+        - "Puzzle 1 — Wells/Africa (Pinterest)"
+        - "Puzzle 2 — LIFECHANGE Sudoku (Reddit)"
+        - "Puzzle 3 — Dirtiest Beach (Imgur)"
+        - "Puzzle 4 — Experiences (ImageShack)"
+        - "Puzzle 5 — Pokemon Go (Photobucket)"
+        - "Puzzle 6 — Wilderness (Medium)"
+        - "Puzzle 7 — Adopted Dogs (Pixelfed)"
+        - "Puzzle 8 — Pyramids (imgpile)"
+        - "Puzzle 9 — Circle (500px)"
+        - "Crossword"
+        - "Super Bowl Ad"
+        - "Bank Heist Teaser"
+        - "Rewatch Video"
+        - "Meta-clue / Overall"
+        - "Not sure yet"
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Where did you find this?
+      options:
+        - "Super Bowl ad (frame analysis)"
+        - "YouTube video content"
+        - "Pinned comment"
+        - "Puzzle image/page"
+        - "Social media (X/Instagram/TikTok)"
+        - "Official hint"
+        - "Reddit / Discord community"
+        - "News article"
+        - "Other"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What did you find?
+      description: Describe the clue in detail. Include screenshots, links, timestamps, or frame numbers.
+      placeholder: "At 0:14 in the Super Bowl ad, the blast door has the numbers 4-7-2 scratched into the metal..."
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Screenshots, URLs, or file references. Drag images here.
+      placeholder: "Screenshot attached, also visible in clues/super_bowl_ad/frames/frame_028.png"
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: How confident are you?
+      options:
+        - "Confirmed — I can prove this is intentional"
+        - "Likely — strong evidence but not 100%"
+        - "Theory — needs more investigation"
+        - "Wild guess — but worth checking"
+    validations:
+      required: true

@@ -1,0 +1,9 @@
+# Default owner for everything
+* @tillo13
+
+# Puzzle solutions need review
+puzzles/ @tillo13
+
+# GitHub tooling
+tools/github/ @tillo13
+.github/ @tillo13

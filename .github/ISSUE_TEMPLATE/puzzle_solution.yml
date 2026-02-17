@@ -1,0 +1,62 @@
+name: "Puzzle Solution"
+description: Submit a solved puzzle or answer word
+title: "[SOLVED] Puzzle # — "
+labels: ["solution", "needs-verification"]
+body:
+  - type: dropdown
+    id: puzzle
+    attributes:
+      label: Which puzzle did you solve?
+      options:
+        - "Puzzle 1 — Wells/Africa"
+        - "Puzzle 2 — LIFECHANGE Sudoku"
+        - "Puzzle 3 — Dirtiest Beach"
+        - "Puzzle 4 — Experiences"
+        - "Puzzle 5 — Pokemon Go"
+        - "Puzzle 6 — Wilderness"
+        - "Puzzle 7 — Adopted Dogs"
+        - "Puzzle 8 — Pyramids"
+        - "Puzzle 9 — Circle"
+        - "Crossword"
+    validations:
+      required: true
+  - type: input
+    id: answer_word
+    attributes:
+      label: Answer word
+      description: The extracted word from this puzzle (one of the 9 meta-clue words)
+      placeholder: "XXXXXXXXX"
+    validations:
+      required: true
+  - type: input
+    id: word_length
+    attributes:
+      label: Word length
+      description: "Expected lengths per position: 5, 9, 5, 7, 8, 4, 9, 6, 5"
+      placeholder: "9"
+    validations:
+      required: true
+  - type: textarea
+    id: solve_method
+    attributes:
+      label: How did you solve it?
+      description: Step-by-step explanation of your solution, including the extraction method.
+      placeholder: |
+        1. Solved the grid using constraint propagation
+        2. Used the laser sequence from the ad (12-1-19-5-18) as cell coordinates
+        3. Read cells at those positions to get the answer word
+    validations:
+      required: true
+  - type: textarea
+    id: extraction
+    attributes:
+      label: Extraction method
+      description: How did you know which cells/letters to read from the solved puzzle?
+      placeholder: "The Super Bowl ad at 0:18 shows numbers that correspond to row-column pairs in the grid..."
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification
+      description: How can others verify your answer? Include cross-references if possible.
