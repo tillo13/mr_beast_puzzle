@@ -47,7 +47,7 @@
 | Category | Count | Description | Our Status |
 |----------|-------|-------------|-----------|
 | Stage 0 playlist | 9 | On the YouTube playlist | SOLVED (9 words) |
-| Playlist setup | 1 | "Sets up the playlist" | UNKNOWN — what is this? |
+| Playlist setup | 1 | "Sets up the playlist" | **IDENTIFIED** — Pokemon crossword (Clue 006), blue intersection letters spell "SOLUTION IS LOCATION". Beastbot confirmed: "There is a puzzle that gets you to the playlist" + "This bank video puzzle goes with screen 12" (10^5=100,000) |
 | Commercial puzzles | 12 | "Entirely in Sunday's commercial" | Partially found (monitors, lasers, etc.) |
 | Bank video puzzles | 12 | "Each goes with one of the screens" | Partially found |
 | Gift puzzles | 10 | "Gifts given out to our friends" | UNKNOWN — need gift poster |
@@ -66,7 +66,7 @@ Stage 0 answers (EVERY, CHALLENGE, LEADS, etc.) are NOT the same type as Stage 1
 
 ### 4. NEW puzzle categories we didn't know about:
 
-- **1 puzzle that sets up the playlist** — What is this?
+- **1 puzzle that sets up the playlist** — **IDENTIFIED (Feb 15):** Pokemon crossword (milliondollarpuzzlewiki Clue 006). Blue letters at intersection points spell "SOLUTION IS LOCATION." Beastbot says it pairs with Screen 12 (10^5) in the ad and is a bank video puzzle.
 - **12 puzzles entirely in the commercial** — We found some monitors/symbols but not 12 distinct puzzles
 - **2 YouTube shorts** — Need to find these
 - **9 on site/Salesforce socials** — Need to scan Salesforce social pages
@@ -101,7 +101,7 @@ Stage 0 answers (EVERY, CHALLENGE, LEADS, etc.) are NOT the same type as Stage 1
 - [ ] Find the 2 YouTube shorts puzzles
 - [ ] Scan Salesforce social pages (X, LinkedIn, Instagram, YouTube) for 9 puzzles
 - [ ] Scan Lone Shark Games socials for 3 puzzles
-- [ ] Identify the 1 "playlist setup" puzzle
+- [x] Identify the 1 "playlist setup" puzzle — Pokemon crossword, Clue 006, intersection letters = "SOLUTION IS LOCATION"
 - [ ] Find the gift poster (10 gifts)
 - [ ] Identify all 12 commercial puzzles
 - [ ] Map 12 bank video puzzles to 12 commercial screens

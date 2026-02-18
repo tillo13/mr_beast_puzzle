@@ -2,8 +2,8 @@ name: Daily Source Monitor
 
 on:
   schedule:
-    # Run daily at 8am Pacific (3pm UTC)
-    - cron: '0 15 * * *'
+    # Run every 6 hours: midnight, 6am, noon, 6pm Pacific
+    - cron: '0 7,13,19,1 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -21,38 +21,110 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install requests
 
-      - name: Run source monitor
-        id: monitor
+      - name: Run scrapers
+        id: scrape
+        working-directory: tools/latest_data/crew_monitor
         run: |
-          python scripts/check_sources.py 2>&1 | tee monitor_output.txt
-          # Check if any sources changed
-          if grep -q "CHANGED" monitor_output.txt; then
+          set +e  # Don't fail on individual scraper errors
+          echo "============================================================"
+          echo "  MrBeast Puzzle — Daily Source Monitor"
+          echo "  $(date -u '+%Y-%m-%d %H:%M UTC')"
+          echo "============================================================"
+          echo ""
+
+          CHANGED=false
+          FAILED=""
+          OUTPUT=""
+
+          run_scraper() {
+            local name="$1"
+            local script="$2"
+            echo "--- [$name] ---"
+            if result=$(python "$script" 2>&1); then
+              echo "$result"
+              # Capture just the last 5 lines as summary
+              short=$(echo "$result" | tail -5)
+              if echo "$result" | grep -qi "change\|new\|added\|updated\|diff"; then
+                CHANGED=true
+                OUTPUT="$OUTPUT\n### $name\n\`\`\`\n$short\n\`\`\`\n"
+              fi
+            else
+              echo "FAILED: $result"
+              FAILED="$FAILED $name"
+              OUTPUT="$OUTPUT\n### $name (FAILED)\n\`\`\`\n$(echo "$result" | tail -3)\n\`\`\`\n"
+            fi
+            echo ""
+          }
+
+          run_scraper "BeastForce Scraper" beastforce_scraper.py
+          run_scraper "BeastForce Monitor" beastforce_monitor.py
+          run_scraper "Google Doc" googledoc_scraper.py
+          run_scraper "Wiki" wiki_scraper.py
+          run_scraper "Gist" gist_scraper.py
+          run_scraper "ARGNet" argnet_scraper.py
+          run_scraper "Team Omega" teamomega_scraper.py
+          run_scraper "Million Dollar Wiki" milliondollarwiki_scraper.py
+
+          echo "============================================================"
+          echo "  DONE"
+          if [ -n "$FAILED" ]; then
+            echo "  Failed:$FAILED"
+          fi
+          echo "============================================================"
+
+          # Write outputs for later steps
+          if [ "$CHANGED" = true ]; then
             echo "changes_detected=true" >> $GITHUB_OUTPUT
           else
             echo "changes_detected=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit updated logs
+          # Save summary for issue body
+          printf '%b' "$OUTPUT" > /tmp/changes_summary.txt
+
+          # Always exit 0 — partial failures are OK
+          exit 0
+
+      - name: Commit updated data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add sources/*/updates.log
+          git add tools/latest_data/crew_monitor/beastforce_data/
+          git add tools/latest_data/crew_monitor/googledoc_data/
+          git add tools/latest_data/crew_monitor/wiki_data/
+          git add tools/latest_data/crew_monitor/gist_data/
+          git add tools/latest_data/crew_monitor/argnet_data/
+          git add tools/latest_data/crew_monitor/teamomega_data/
+          git add tools/latest_data/crew_monitor/milliondollarwiki_data/
+          git add tools/latest_data/crew_monitor/beastforce_memory.json
+          git add tools/latest_data/crew_monitor/beastforce_snapshot.json
+          git add tools/latest_data/crew_monitor/seen_items.json
+          git add tools/latest_data/crew_monitor/memory.json
           git diff --cached --quiet || git commit -m "chore: daily source monitor $(date +%Y-%m-%d)"
           git push || true
 
       - name: Create issue if changes detected
-        if: steps.monitor.outputs.changes_detected == 'true'
+        if: steps.scrape.outputs.changes_detected == 'true'
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
-            const output = fs.readFileSync('monitor_output.txt', 'utf8');
+            let summary = '';
+            try {
+              summary = fs.readFileSync('/tmp/changes_summary.txt', 'utf8');
+            } catch (e) {
+              summary = 'Changes detected but summary unavailable.';
+            }
+            // Truncate to stay under GitHub's 65536 char limit
+            if (summary.length > 60000) {
+              summary = summary.substring(0, 60000) + '\n\n... (truncated)';
+            }
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: `[AUTO] Source changes detected — ${new Date().toISOString().split('T')[0]}`,
-              body: `The daily source monitor detected changes:\n\n\`\`\`\n${output}\n\`\`\`\n\nCheck \`sources/*/updates.log\` for details.`,
+              body: `The daily source monitor detected changes:\n\n${summary}\n\nCheck scraper data dirs in \`tools/latest_data/crew_monitor/\` for details.`,
               labels: ['clue', 'needs-verification']
             });

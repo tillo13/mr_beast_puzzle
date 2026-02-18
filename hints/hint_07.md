@@ -29,32 +29,34 @@
 
 ---
 
-## Analysis
+## Confirmed Resolution
 
-### Mechanism (step by step):
-1. **A clue exists** (crossword or Stage 1 puzzle) that names a specific type of number puzzle and tells you to ask Slackbot about it
-2. **Ask Slackbot about that number puzzle type** in a Puzzle Card → Slackbot gives you "a place to look" (a location)
-3. **The answer is deterministic** — "you'll always get the same one" (same place every time, every player)
-4. **The puzzle at that location requires massive collaboration** — "maybe a million" friends
+### The number puzzle = Sudoku. The place to look = onemil.xyz.
 
-### Key observations:
-- "A specific kind of number puzzle" — Sudoku? Kakuro? KenKen? Nonogram? The clue specifies which one
-- "You'll always get the same one" — Slackbot's response is fixed, not personalized
-- "Maybe a million of them" — Classic MrBeast scale; puzzle likely requires crowdsourcing across his subscriber base
-- Preamble mentions Beastbot AND "fellow humans" — some puzzles need both AI hints and community help
+**Tested Feb 15, 2026.** Asking Slackbot "i found something that looks like a sudoku in the puzzle. is this a puzzle i should be solving?" in a fresh Puzzle Card triggers a deterministic response:
 
-### What we don't know:
-- Which clue references the number puzzle (not in the 48 revealed crossword clues as of Feb 15)
-- Which type of number puzzle it is
-- What "a place to look" means (URL? physical location? section of the site?)
-- How "a million friends" factor in (each contributes a piece? collective action needed?)
+> "That could be a puzzle to explore. Visit the Puzzle Vault and create a new puzzle card describing what you found so you can track theories and next steps. If you specifically want guidance on Sudoku, check this link for more info http://onemil.xyz."
 
-### Action items:
-- [ ] Try asking Slackbot about known number puzzle types (Sudoku, Kakuro, KenKen, Nonogram) in fresh Puzzle Cards
-- [ ] Check community (Reddit, Discord, Google Doc) for reactions to this hint
-- [ ] Monitor for new crossword clue reveals — the clue naming the number puzzle may not be visible yet
-- [ ] Review the 60 Stage 1 puzzles for any that reference number puzzles
+**Key detail:** You MUST name "Sudoku" specifically. A vague question about "number puzzles" gets generic advice — no URL. The trigger word is "sudoku."
+
+### onemil.xyz
+- Sudoku puzzle site — each player gets a different grid
+- Our grid: Sudoku #120733 (solved, stored in vault card `a07fm00000Af3VdAAJ`)
+- Solution: `625943817 791528463 384176952 812397645 963485721 547612389 276859134 158734296 439261578`
+- Community identified LIF(E)CHANGE wordoku variant on Reddit — digits may map to letters in LIFECHANGE
+
+### Mechanism (confirmed):
+1. **A clue exists** that mentions a number puzzle (Sudoku) and tells you to ask Slackbot
+2. **Ask Slackbot about Sudoku** in a Puzzle Card → get onemil.xyz
+3. **The answer is deterministic** — every player gets the same URL
+4. **Each player gets a different Sudoku grid** on onemil.xyz
+5. **"Need friends / maybe a million"** — the puzzle requires combining results across many players' individual grids
+
+### Vault cards:
+- **Hint #7 card:** `a07fm00000AkG43AAF` (Hints & Game Structure column)
+- **onemil.xyz solve:** `a07fm00000Af3VdAAJ` (Active Theories column)
+- **Screen 10 Sweater/Sudoku link:** `a07fm00000Af49xAAB` (Active Theories column)
 
 ---
 
-**Related:** Hints #1-6 in `hints/` folder
+**Related:** Hints #0-6 in `hints/` folder
