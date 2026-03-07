@@ -1,23 +1,79 @@
 {
-  "description": "A few Beastbot responses we've gotten on well-known community topics. We've found that how you frame your Puzzle Cards matters — being specific about what you've observed (not what you think the answer is) tends to get more useful responses.",
-  "caveat": "Beastbot never confirms specific answers. It confirms puzzle types and gives structural hints. Everything here should be treated as a nudge, not proof. Data may be stale.",
+  "description": "A curated set of Beastbot responses from our 26-day project. We sent 2,100+ questions in total across 52 sessions. These samples illustrate what triggers Beastbot, what kinds of responses it gives, and what each response meant for our puzzle approach.",
+  "methodology": "Every question went through a fresh Puzzle Card with a specific card name, answer field, and notes — all filled with relevant data. The first message to a fresh card had the highest Beastbot trigger rate. Card context (not lobby) was required for Beastbot to respond at all — this is only discoverable via API inspection, not from the UI.",
+  "trigger_rate": "Beastbot responded to roughly 5% of questions overall. Some topics (EYJAFJALLAJOKULL, the crossword structure) had significantly higher trigger rates. 'Final code format' questions were deflected 51% of the time — a strong signal the bot actively avoided that topic.",
+  "caveat": "Beastbot never confirms specific answers. It confirms puzzle types and gives structural hints. Everything here should be treated as a nudge toward a puzzle mechanism — not proof of any specific answer. Beastbot is an LLM. Treat it as T3 signal at best.",
   "samples": [
     {
       "topic": "Crossword Structure",
+      "card_framing": "siam instead of thailand in the crossword grid",
       "beastbot_response": "Yes, this is a puzzle. One that's going through some changes. ||| This is likely a crossword. In a crossword, numbered clues lead to words reading across and down. Crosswords are symmetrical and all letters are in both across and down clues.",
-      "why_this_is_interesting": "Beastbot confirmed the crossword is 'going through some changes' — aligns with the adaptive puzzle design MrBeast announced in Hint #3. The textbook crossword definition is Beastbot's way of confirming you're looking at the right puzzle type."
+      "why_interesting": "Beastbot confirmed the crossword is 'going through some changes' — directly aligned with MrBeast's Hint #3 that said 'We've been checking in on everything you've solved.' The adaptive puzzle design was real. The textbook crossword definition at the end is Beastbot's way of confirming you're looking at the right puzzle type.",
+      "lesson": "Discovery framing ('I found SIAM instead of THAILAND') gets better responses than demands ('Is the crossword using alternate country names?')"
     },
     {
-      "topic": "Soups Hidden in Theme Entries",
+      "topic": "16 Circled Cells → EYJAFJALLAJOKULL",
+      "card_framing": "i mapped 16 circled cell positions and the letters are an exact multiset match for eyjafjallajokull",
+      "beastbot_response": "Yes, this is a puzzle. This bank video puzzle goes with screen 2. If something is mixed up, mix it up.",
+      "why_interesting": "This is one of our highest-value responses. It confirmed EYJAFJALLAJOKULL as the extraction target from the crossword's 16 circled cells. The 'bank video goes with screen 2' and 'if something is mixed up, mix it up' were separate hints pointing toward a different puzzle layer — the 12 Super Bowl ad screens mapping to bank video elements. Beastbot occasionally gives compound responses with hints about multiple puzzle layers simultaneously.",
+      "lesson": "Present specific data (exact letter set, coordinates, the match you found) rather than asking a general question. Beastbot responds to observations, not requests for confirmation."
+    },
+    {
+      "topic": "Soups in Theme Entries — Count Discrepancy",
+      "card_framing": "i found 9 soup words hidden in the 9 theme entries but the 167A clue says eleven hidden words",
       "beastbot_response": "Yes, this is a puzzle. This is likely a word search. The number of water drops may matter.",
-      "why_this_is_interesting": "Beastbot called it a 'word search' (hidden words within longer entries) and hinted that 'water drops' from the BTS video may be relevant. The community has found 9 of the 11 expected soup names — the gap suggests 2 more are hidden somewhere."
+      "why_interesting": "Beastbot called it a 'word search' (words hidden within longer entries) and pointed toward 'water drops' from the BTS video as a counting mechanism. The community had found 9 of the 11 expected soup names — this response suggested 2 more were hidden and the water drop count was the key to finding them. 'The number of water drops may matter' was a structural hint, not an answer.",
+      "lesson": "Presenting the specific discrepancy ('9 found but clue says 11') gave Beastbot a concrete gap to respond to. Asking 'how many soups are there?' would have been deflected."
     },
     {
-      "topic": "Soup-to-Crossword Intersection",
+      "topic": "Broth Crossing Entries — Wordoku Pattern",
+      "card_framing": "BROTHs crossing entries pass through 5 different country paths: JAPAN OMAN SPAIN CHAD GHANA",
       "beastbot_response": "Yes, this is a puzzle. This is likely a wordoku. A wordoku is a sudoku with letters. While most sudoku use the numbers 1 to 9, the rules of sudoku can work with any set of nine elements. In wordoku puzzles, some row, column, or diagonal (sometimes shaded or indicated by an arrow, but sometimes not) spells out a word or phrase using nine different letters. Not all lines are straight.",
-      "why_this_is_interesting": "Beastbot introduced a new puzzle type — wordoku — suggesting part of the crossword grid may function as a Sudoku variant using letters. 'Not all lines are straight' is a cryptic hint about the extraction path."
+      "why_interesting": "Beastbot introduced an entirely new puzzle type — wordoku — in response to a specific observation about crossing entry patterns. 'Not all lines are straight' was a cryptic structural hint about extraction direction. This completely changed how we thought about the country column mechanism: it wasn't just vertical hidden words, but potentially a wordoku variant where extraction paths aren't in straight lines.",
+      "lesson": "Naming the specific data (soup name + exact countries in its crossing entries) gave Beastbot enough context to respond with the relevant puzzle type. Generic 'what is this?' questions got generic responses."
+    },
+    {
+      "topic": "Bank Video Screen Mapping",
+      "card_framing": "beastbot said the 12 screens are partial puzzles in a continuous line left to right and each screen has a common element expressed differently",
+      "beastbot_response": "Yes, this is a puzzle. It also contains 12 partial puzzles in a continuous line from left to right. There is a puzzle that helps a bank video puzzle in each screen, and there is a puzzle uniting all the screens. Each screen has an element that is common to all the screens, but expressed in a different way.",
+      "why_interesting": "This response clarified the entire architecture of the bank video puzzle layer: 12 screens (matching the 12 Super Bowl ad screens), each screen containing a partial puzzle that links to something external, and a meta-puzzle that unites all 12. 'An element common to all screens, expressed differently' — this was a structural description of how the screens connected to each other.",
+      "lesson": "Following up on a previous Beastbot response by quoting it back ('Beastbot said X') can trigger another substantive response. Fresh cards with the prior response in the notes worked well."
+    },
+    {
+      "topic": "Jimmy Monologue — Names Read Different Ways",
+      "card_framing": "BROTHs crossing entries — three soups have zero country paths in their grid regions",
+      "beastbot_response": "Yes, this is a puzzle. Have you understood Jimmy's monologue in every way you can? Some names can be read different ways.",
+      "why_interesting": "Beastbot deflected the specific soup question and redirected to something apparently unrelated: Jimmy's monologue and 'names read different ways.' This pointed toward an alternate country name mechanism (SIAM for Thailand, HELLAS for Greece) that the community later confirmed in the crossword grid. Beastbot's redirects were sometimes more valuable than its direct responses.",
+      "lesson": "When Beastbot changes the subject, follow the redirect — it's pointing at something. 'Some names can be read different ways' was a significant clue about alternate country names."
+    },
+    {
+      "topic": "Playlist Path Puzzle",
+      "card_framing": "there is a puzzle that gets you to the playlist and i may not have noticed how i got there",
+      "beastbot_response": "Yes, this is a puzzle. There is a puzzle that gets you to the playlist. You got to the playlist so quickly, you may have not noticed how you got there.",
+      "why_interesting": "This response confirmed that Stage 0 — the 9 playlist puzzles — had a meta-level we hadn't investigated. The community had jumped straight to solving the 9 individual puzzles and extracted the meta-answer quickly. Beastbot was hinting that the *path* to the playlist was itself a puzzle. This opened up a whole layer of investigation into how the playlist was embedded and what puzzle led to it.",
+      "lesson": "Beastbot sometimes confirms something exists without telling you what it is. 'There is a puzzle' + 'you may not have noticed how you got there' = go back and look at the path, not just the destination."
+    },
+    {
+      "topic": "Combination Lock Format",
+      "card_framing": "r62 l39 r05 combination format — dashes between segments",
+      "beastbot_response": "Yes, this is a puzzle.",
+      "why_interesting": "Beastbot fired on R62-L39-R05 consistently across multiple probe sessions. While the response itself was minimal ('Yes, this is a puzzle.'), the trigger rate on EYJAFJALLAJOKULL and combination-lock-format cards was 5.2% vs a ~1% baseline. The pattern across 172 probes on related topics was the signal — not any individual response. This is why corpus analysis matters more than individual responses.",
+      "lesson": "A short Beastbot response ('Yes, this is a puzzle.') means the card name hit something real. The response length doesn't indicate the importance. Track trigger RATES across many probes on the same topic."
     }
   ],
-  "note": "If you're working on this puzzle and want to compare notes on Beastbot strategy, open an issue on this repo.",
-  "last_updated": "2026-02-17"
+  "corpus_summary": {
+    "total_sessions": 52,
+    "total_interactions": 2100,
+    "total_days": 26,
+    "beastbot_trigger_rate_overall": "~5%",
+    "highest_trigger_topics": [
+      "EYJAFJALLAJOKULL (5.2% over 172 probes)",
+      "ACCRA as final element (8.0% over 87 probes)",
+      "Crossword structure (7.4% over 54 probes)"
+    ],
+    "most_deflected_topic": "Final code format (51% of 239 probes deflected)",
+    "key_methodological_finding": "Pattern across 10+ independent probes with varied framings > any single strong response. LLMs mirror your confidence. Volume reveals signal."
+  },
+  "note": "If you're building agentic systems that query noisy AI bots at scale, open an issue. The framing methodology and corpus analysis approach transfer directly to other domains.",
+  "last_updated": "2026-03-06"
 }
